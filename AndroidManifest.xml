@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.aircandi.candiblast"
+    package="com.aircandi.candigram"
     android:installLocation="auto"
     android:versionCode="83"
     android:versionName="0.9.39" >
@@ -75,13 +75,13 @@
             android:name="com.aircandi.library.ScanService"
             android:enabled="true"
             android:label="@string/name_app" />
-        
+
         <service android:name="com.aircandi.library.components.GcmIntentService" />
 
         <!-- Receivers -->
 
         <receiver android:name="com.aircandi.library.components.LocationChangedReceiver" />
-        
+
         <receiver
             android:name="com.aircandi.library.components.GcmBroadcastReceiver"
             android:permission="com.google.android.c2dm.permission.SEND" >
@@ -155,7 +155,7 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/name_app"
             android:windowSoftInputMode="stateHidden" />
-        
+
         <!-- Editing activities -->
 
         <activity
@@ -212,7 +212,7 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/form_title_report"
             android:windowSoftInputMode="adjustResize" />
-        
+
         <!-- User activities -->
 
         <activity
