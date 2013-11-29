@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
 
-    <!-- Names -->
-
-    <string name="name_app">Candiblast</string>
-
+    <string name="progress_upsizing">Activating candigrams&#8230;</string>
+    <string name="help_place_candigrams">Browse candigrams that have traveled to this place</string>
+    <string name="help_place_add">Use the action bar to add candigrams</string>
+    <string name="section_place_shortcuts_candigrams">candigrams</string>
+    
 </resources>
