@@ -6,11 +6,11 @@ import android.content.res.Resources;
 
 import com.aircandi.Aircandi;
 import com.aircandi.Constants;
-import com.aircandi.R;
-import com.aircandi.components.Maps;
+import com.aircandi.barbados.R;
 import com.aircandi.service.objects.Link.Direction;
 import com.aircandi.service.objects.LinkParams;
 import com.aircandi.service.objects.User;
+import com.aircandi.utilities.Maps;
 
 /**
  * @author Jayma

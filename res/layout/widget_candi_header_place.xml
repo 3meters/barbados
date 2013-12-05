@@ -32,20 +32,20 @@
                 android:layout_width="@dimen/form_button_height"
                 android:layout_height="@dimen/form_button_height"
                 android:layout_marginRight="3dp"
-                custom:drawable="?attr/iconLike"
-                custom:layout="@layout/widget_combo_button_no_text"
                 android:minWidth="@dimen/form_button_height"
-                android:onClick="onLikeButtonClick" />
+                android:onClick="onLikeButtonClick"
+                custom:drawable="?attr/iconLike"
+                custom:layout="@layout/widget_combo_button_no_text" />
 
             <com.aircandi.ui.widgets.ComboButton
                 android:id="@+id/button_watch"
                 style="@style/form_button"
                 android:layout_width="@dimen/form_button_height"
                 android:layout_height="@dimen/form_button_height"
-                custom:drawable="?attr/iconWatch"
-                custom:layout="@layout/widget_combo_button_no_text"
                 android:minWidth="@dimen/form_button_height"
-                android:onClick="onWatchButtonClick" />
+                android:onClick="onWatchButtonClick"
+                custom:drawable="?attr/iconWatch"
+                custom:layout="@layout/widget_combo_button_no_text" />
         </LinearLayout>
 
         <com.aircandi.ui.widgets.ComboButton
@@ -54,10 +54,17 @@
             android:layout_width="@dimen/form_button_height"
             android:layout_height="@dimen/form_button_height"
             android:layout_weight="0"
-            custom:drawable="?attr/iconOverflow"
-            custom:layout="@layout/widget_combo_button_no_text"
             android:minWidth="@dimen/form_button_height"
-            android:onClick="onOverflowButtonClick" />
+            android:onClick="onOverflowButtonClick"
+            custom:drawable="?attr/iconOverflow"
+            custom:layout="@layout/widget_combo_button_no_text" />
+
+        <com.aircandi.ui.widgets.AirTextView
+            android:id="@+id/candi_form_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            tools:text="@string/dummy_description" />
     </LinearLayout>
 
 </merge>

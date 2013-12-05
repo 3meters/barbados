@@ -6,10 +6,10 @@ import java.util.List;
 import com.aircandi.Aircandi;
 import com.aircandi.Constants;
 import com.aircandi.components.EntityManager;
-import com.aircandi.components.Maps;
 import com.aircandi.components.ProximityManager.ModelResult;
 import com.aircandi.service.objects.Action.EventType;
 import com.aircandi.service.objects.Cursor;
+import com.aircandi.utilities.Maps;
 
 public class ActivityFragmentExtended extends ActivityFragment {
 

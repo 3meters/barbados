@@ -10,5 +10,6 @@
     
     <!-- The screen names that will appear in the reporting -->
     <string name="com.aircandi.ui.AboutFormExtended">AboutForm</string>
+    <string name="com.aircandi.ui.PlaceFormExtended">PlaceForm</string>
     
 </resources>

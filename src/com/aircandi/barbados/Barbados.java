@@ -1,10 +1,11 @@
 package com.aircandi.barbados;
 
 import com.aircandi.Aircandi;
+import com.aircandi.R;
 import com.aircandi.barbados.components.MenuManager;
 import com.aircandi.barbados.objects.Links;
 import com.aircandi.components.EntityManager;
-
+import com.aircandi.utilities.Strings;
 
 public class Barbados extends Aircandi {
 
@@ -15,12 +16,16 @@ public class Barbados extends Aircandi {
 
 	@Override
 	protected void initializeInstance() {
-		super.initializeInstance();
-		
 		/* Must have this so activity rerouting works. */
-		Aircandi.applicationContext = getApplicationContext(); 
-		
-		/* Configure */
+		Aircandi.applicationContext = getApplicationContext();
+		super.initializeInstance();
+
+		/* Inject configuration */
+		openContainer(Strings.getString(R.string.id_container));
+	}
+
+	@Override
+	protected void configure() {
 		EntityManager.getInstance().setLinks(new Links());
 		mMenuManager = new MenuManager();
 	}
