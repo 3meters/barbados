@@ -9,8 +9,8 @@ import com.aircandi.R;
 import com.aircandi.components.RenderDelegate;
 import com.aircandi.service.objects.Action.EventType;
 import com.aircandi.service.objects.Count;
-import com.aircandi.service.objects.User;
 import com.aircandi.service.objects.Link.Direction;
+import com.aircandi.service.objects.User;
 import com.aircandi.ui.base.BaseEntityForm;
 import com.aircandi.utilities.UI;
 

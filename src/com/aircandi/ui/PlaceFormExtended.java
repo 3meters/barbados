@@ -45,7 +45,7 @@ public class PlaceFormExtended extends PlaceForm {
 	@Override
 	public void onShortcutClick(View view) {
 		final Shortcut shortcut = (Shortcut) view.getTag();
-		if (shortcut.action.equals(Constants.ACTION_INSERT) && shortcut.app.equals(Constants.TYPE_APP_CANDIGRAM)) {
+		if (shortcut.action != null && shortcut.action.equals(Constants.ACTION_INSERT) && shortcut.app.equals(Constants.TYPE_APP_CANDIGRAM)) {
 			onAdd();
 		}
 		else {
@@ -88,6 +88,7 @@ public class PlaceFormExtended extends PlaceForm {
 
 		/* Candigram shortcuts */
 		ShortcutSettings settings = new ShortcutSettings(Constants.TYPE_LINK_CONTENT, Constants.SCHEMA_ENTITY_CANDIGRAM, Direction.in, null, false, false);
+		settings.appClass = Candigrams.class;
 		shortcuts = (List<Shortcut>) mEntity.getShortcuts(settings, null, new Shortcut.SortByPositionSortDate());
 		if (shortcuts.size() > 0) {
 			Collections.sort(shortcuts, new Shortcut.SortByPositionSortDate());
