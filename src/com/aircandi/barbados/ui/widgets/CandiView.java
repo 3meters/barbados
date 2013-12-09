@@ -1,5 +1,6 @@
 package com.aircandi.barbados.ui.widgets;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
@@ -24,6 +25,8 @@ public class CandiView extends com.aircandi.ui.widgets.CandiView {
 	public static final int	HORIZONTAL	= 0;
 	public static final int	VERTICAL	= 1;
 
+	List<Shortcut>			mShortcuts	= new ArrayList<Shortcut>();
+
 	public CandiView(Context context) {
 		this(context, null);
 	}
@@ -46,14 +49,26 @@ public class CandiView extends com.aircandi.ui.widgets.CandiView {
 	public void showIndicators(Entity entity, IndicatorOptions options) {
 
 		/* Indicators */
-		setVisibility(mShortcuts, View.GONE);
-		if (mShortcuts != null) {
-
-			mShortcuts.removeAllViews();
+		setVisibility(mHolderShortcuts, View.GONE);
+		if (mHolderShortcuts != null) {
 
 			ShortcutSettings settings = new ShortcutSettings(Constants.TYPE_LINK_CONTENT, Constants.SCHEMA_ENTITY_CANDIGRAM, Direction.in, null, false, false);
 			List<Shortcut> shortcuts = (List<Shortcut>) entity.getShortcuts(settings, null, new Shortcut.SortByPositionSortDate());
-			if (shortcuts.size() > 0) {
+
+			Boolean dirty = (mShortcuts.size() != shortcuts.size());
+			if (!dirty) {
+				Integer i = 0;
+				for (Shortcut shortcut : mShortcuts) {
+					if (!UI.photosEqual(shortcut.getPhoto(), shortcuts.get(i).getPhoto())) {
+						dirty = true;
+						break;
+					}
+					i++;
+				}
+			}
+
+			if (dirty) {
+				mHolderShortcuts.removeAllViews();
 
 				final LayoutInflater inflater = LayoutInflater.from(this.getContext());
 				final int sizePixels = UI.getRawPixelsForDisplayPixels(this.getContext(), 40);
@@ -75,11 +90,14 @@ public class CandiView extends com.aircandi.ui.widgets.CandiView {
 								, marginPixels
 								, marginPixels);
 						view.setLayoutParams(params);
-						mShortcuts.addView(view);
+						mHolderShortcuts.addView(view);
 					}
 					shortcutCount++;
 				}
-				setVisibility(mShortcuts, View.VISIBLE);
+				mShortcuts = shortcuts;
+			}
+			if (mShortcuts.size() > 0) {
+				setVisibility(mHolderShortcuts, View.VISIBLE);
 			}
 		}
 	}

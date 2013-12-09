@@ -43,7 +43,7 @@ public class ActivityFragmentExtended extends ActivityFragment {
 
 		List<String> events = new ArrayList<String>();
 		events.add(EventType.INSERT_PLACE);
-		events.add(EventType.INSERT_CANDIGRAM);
+		events.add(EventType.INSERT_CANDIGRAM_TO_PLACE);
 		events.add(EventType.INSERT_PICTURE_TO_CANDIGRAM);
 		events.add(EventType.INSERT_COMMENT_TO_CANDIGRAM);
 		events.add(EventType.MOVE_CANDIGRAM);

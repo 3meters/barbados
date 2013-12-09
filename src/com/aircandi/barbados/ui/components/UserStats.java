@@ -50,7 +50,7 @@ public class UserStats implements RenderDelegate {
 			for (Count stat : user.stats) {
 								
 				/* Insert */
-				if (stat.type.equals(EventType.INSERT_CANDIGRAM)) {
+				if (stat.type.equals(EventType.INSERT_CANDIGRAM_TO_PLACE)) {
 					insertCandigramCount += stat.count.intValue();
 				}
 				else if (stat.type.equals(EventType.INSERT_PICTURE_TO_CANDIGRAM)) {
