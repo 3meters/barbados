@@ -6,7 +6,10 @@ import android.support.v4.app.Fragment;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
+import com.aircandi.Aircandi;
 import com.aircandi.barbados.R;
+import com.aircandi.utilities.Strings;
+import com.aircandi.utilities.Type;
 
 public class MenuManager extends com.aircandi.components.MenuManager {
 
@@ -20,6 +23,10 @@ public class MenuManager extends com.aircandi.components.MenuManager {
 		if (activityName.equals("PlaceFormExtended")) {
 			menuInflater.inflate(R.menu.menu_base, menu);
 			menuInflater.inflate(R.menu.menu_browse_place, menu);
+			if (Type.isTrue(Aircandi.getInstance().getCurrentUser().developer)
+					&& Aircandi.settings.getBoolean(Strings.getString(R.string.pref_enable_dev), false)) {
+				menuInflater.inflate(R.menu.menu_browse_entity_dev, menu);
+			}
 			menuInflater.inflate(R.menu.menu_help, menu);
 			return true;
 		}
