@@ -12,6 +12,7 @@ import com.aircandi.Constants;
 import com.aircandi.applications.Candigrams;
 import com.aircandi.barbados.R;
 import com.aircandi.components.EntityManager;
+import com.aircandi.events.MessageEvent;
 import com.aircandi.service.objects.Link.Direction;
 import com.aircandi.service.objects.Shortcut;
 import com.aircandi.service.objects.ShortcutSettings;
@@ -21,12 +22,19 @@ import com.aircandi.utilities.Routing;
 import com.aircandi.utilities.Routing.Route;
 import com.aircandi.utilities.Strings;
 import com.aircandi.utilities.UI;
+import com.squareup.otto.Subscribe;
 
 public class PlaceFormExtended extends PlaceForm {
 
 	// --------------------------------------------------------------------------------------------
 	// Events
 	// --------------------------------------------------------------------------------------------
+	@Override
+	@Subscribe
+	@SuppressWarnings("ucd")
+	public void onMessage(final MessageEvent event) {
+		super.onMessage(event);
+	}
 
 	@Override
 	public void onAdd() {
@@ -67,7 +75,7 @@ public class PlaceFormExtended extends PlaceForm {
 	protected void drawShortcuts() {
 
 		/* Clear shortcut holder */
-		((ViewGroup) findViewById(R.id.shortcut_holder)).removeAllViews();
+		((ViewGroup) findViewById(R.id.holder_shortcuts)).removeAllViews();
 
 		List<Shortcut> shortcuts = new ArrayList<Shortcut>();
 
@@ -102,7 +110,7 @@ public class PlaceFormExtended extends PlaceForm {
 					, R.string.section_place_shortcuts_candigrams
 					, R.string.section_links_more
 					, mResources.getInteger(R.integer.limit_shortcuts_flow)
-					, R.id.shortcut_holder
+					, R.id.holder_shortcuts
 					, R.layout.temp_place_switchboard_item);
 		}
 	}

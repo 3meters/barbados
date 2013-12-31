@@ -45,7 +45,7 @@ public class UserStats implements RenderDelegate {
 			int insertCandigramCount = 0;
 			int updateCandigramCount = 0;
 			int bounceCount = 0;
-			int expandCount = 0;
+			int forwardCount = 0;
 
 			for (Count stat : user.stats) {
 								
@@ -65,12 +65,12 @@ public class UserStats implements RenderDelegate {
 					updateCandigramCount += stat.count.intValue();
 				}
 				
-				/* Move and expand */
+				/* Move and forward */
 				else if (stat.type.equals(EventType.MOVE_CANDIGRAM)) {
 					bounceCount += stat.count.intValue();
 				}
-				else if (stat.type.equals(EventType.EXPAND_CANDIGRAM)) {
-					expandCount += stat.count.intValue();
+				else if (stat.type.equals(EventType.FORWARD_CANDIGRAM)) {
+					forwardCount += stat.count.intValue();
 				}
 
 			}
@@ -95,8 +95,8 @@ public class UserStats implements RenderDelegate {
 				statString.append("Candigrams kicks: " + String.valueOf(bounceCount) + "<br/>");
 			}
 
-			if (expandCount > 0) {
-				statString.append("Candigrams repeats: " + String.valueOf(expandCount) + "<br/>");
+			if (forwardCount > 0) {
+				statString.append("Candigrams forwarded: " + String.valueOf(forwardCount) + "<br/>");
 			}
 
 			stats.setText(Html.fromHtml(statString.toString()));

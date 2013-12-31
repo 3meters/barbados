@@ -38,7 +38,7 @@ public class GcmIntentService extends com.aircandi.components.GcmIntentService {
 		events.add(EventType.INSERT_PICTURE_TO_CANDIGRAM);
 		events.add(EventType.INSERT_COMMENT_TO_CANDIGRAM);
 		events.add(EventType.MOVE_CANDIGRAM);
-		events.add(EventType.EXPAND_CANDIGRAM);
+		events.add(EventType.FORWARD_CANDIGRAM);
 		events.add(EventType.RESTART_CANDIGRAM);
 
 		if (message.action.entity != null) {

@@ -7,12 +7,29 @@ import com.aircandi.Aircandi;
 import com.aircandi.Constants;
 import com.aircandi.components.EntityManager;
 import com.aircandi.components.ProximityManager.ModelResult;
+import com.aircandi.events.MessageEvent;
 import com.aircandi.service.objects.Action.EventType;
 import com.aircandi.service.objects.Cursor;
 import com.aircandi.utilities.Maps;
+import com.squareup.otto.Subscribe;
 
 public class ActivityFragmentExtended extends ActivityFragment {
 
+	// --------------------------------------------------------------------------------------------
+	// Events
+	// --------------------------------------------------------------------------------------------
+	
+	@Override
+	@Subscribe
+	@SuppressWarnings("ucd")
+	public void onMessage(final MessageEvent event) {
+		/*
+		 * Must pass this through because event bus doesn't
+		 * find the super class.
+		 */
+		super.onMessage(event);
+	}
+	
 	// --------------------------------------------------------------------------------------------
 	// Methods
 	// --------------------------------------------------------------------------------------------
@@ -47,7 +64,7 @@ public class ActivityFragmentExtended extends ActivityFragment {
 		events.add(EventType.INSERT_PICTURE_TO_CANDIGRAM);
 		events.add(EventType.INSERT_COMMENT_TO_CANDIGRAM);
 		events.add(EventType.MOVE_CANDIGRAM);
-		events.add(EventType.EXPAND_CANDIGRAM);
+		events.add(EventType.FORWARD_CANDIGRAM);
 		events.add(EventType.RESTART_CANDIGRAM);
 
 		ModelResult result = EntityManager.getInstance().loadActivities(Aircandi.getInstance().getCurrentUser().id, mCursor, events);

@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.aircandi.barbados"
     android:installLocation="auto"
-    android:versionCode="90"
-    android:versionName="0.9.45" >
+    android:versionCode="95"
+    android:versionName="0.9.47" >
 
     <supports-screens
         android:anyDensity="true"
@@ -30,13 +30,24 @@
         android:protectionLevel="signature" />
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    
+    <!-- Support location -->
+    
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
+    
+    <!-- Support network and wifi interactions -->
+    
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    
+    <!-- Support email addresses for invite  -->
+    
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+    
+    <!-- Support play services -->
+    
     <uses-permission android:name="com.aircandi.barbados.permission.MAPS_RECEIVE" />
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
 
@@ -88,7 +99,7 @@
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
                 <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
-                <category android:name="com.aircandi" />
+                <category android:name="com.aircandi.barbados" />
             </intent-filter>
         </receiver>
 
@@ -173,7 +184,7 @@
             android:label="@string/name_app"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name="com.aircandi.ui.edit.CandigramEdit"
+            android:name="com.aircandi.ui.edit.MessageEdit"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/name_app"
             android:windowSoftInputMode="stateHidden" />
@@ -264,6 +275,10 @@
 
         <activity
             android:name="com.aircandi.ui.helpers.PhotoPicker"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.aircandi.ui.helpers.PlacePicker"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:windowSoftInputMode="stateHidden" />
         <activity
