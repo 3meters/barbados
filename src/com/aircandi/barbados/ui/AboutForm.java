@@ -1,11 +1,11 @@
-package com.aircandi.ui;
+package com.aircandi.barbados.ui;
 
 import android.os.Bundle;
 import android.widget.TextView;
 
-import com.aircandi.R;
+import com.aircandi.barbados.R;
 
-public class AboutFormExtended extends AboutForm {
+public class AboutForm extends com.aircandi.ui.AboutForm {
 
 	private TextView	mAppName;
 

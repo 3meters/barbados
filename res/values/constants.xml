@@ -15,15 +15,23 @@
 
     <!-- Splash -->
 
-    <string name="splash_message">connect with people through the places they love</string>
-    
-    <!-- Preference defaults -->
+    <string name="splash_message">share with people through the places they love</string>
 
+    <!-- Preferences -->
+
+    <string name="pref_messages_candigrams">[@string/id_package]_pref_messages_candigrams</string>
     <string name="pref_theme_default">aircandi_theme_midnight</string>
-    <bool name="pref_notifications_candigrams_default">true</bool>
+
+    <!-- Preference defaults -->
     
+    <bool name="pref_notifications_candigrams_default">true</bool>
+
     <!-- Tag manager -->
 
     <string name="id_container">GTM-TJX78T</string>
-    
+
+    <!-- Service paging sizes -->
+
+    <integer name="page_size_candigrams">30</integer>
+
 </resources>

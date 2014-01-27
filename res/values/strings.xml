@@ -1,9 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="progress_upsizing">Activating candigrams&#8230;</string>
+	<!-- Titles -->
+	
+    <string name="form_title_candigram">candigram</string>
+    
+	<!-- Preferences -->
+	
+    <string name="pref_notifications_candigrams_title">Candigrams</string>
+    <string name="pref_notifications_candigrams_summary">Notify me when candigrams are added</string>
+    
+    <!-- Help -->
+    
     <string name="help_place_candigrams">Browse candigrams that have traveled to this place</string>
     <string name="help_place_add">Use the action bar to add candigrams</string>
-    <string name="section_place_shortcuts_candigrams">candigrams</string>
+    <string name="help_candigram_range">How far this candigram can go when it travels</string>
+    <string name="help_candigram_duration">How long a touring candigram stays before traveling to a new place</string>
+    <string name="help_candigram_hops">How many places a candigram can travel to</string>
+    <string name="help_candigram_stopped">Park the candigram and stop traveling</string>
+    <string name="help_candigram_touring">Touring candigrams travel place to place gathering pictures and comments as they go! Watch this candigram and follow it on it\'s tour.</string>
+    <string name="help_candigram_bouncing">A kick sends a bouncing candigram traveling to a new place. Add a picture or comment and watch this candigram go!</string>
+    <string name="help_candigram_tour_short">Start a candigram that travels from place to place</string>
+    <string name="help_candigram_bounce_short">A kick sends the candigram to a new place</string>
     
+	<!-- Alerts -->
+    
+    <string name="alert_started">started</string>
+    <string name="alert_stopped">stopped</string>
+    
+    <string name="alert_candigram_toured">This candigram traveled to a new place</string>
+    <string name="alert_candigram_bounced">This candigram was kicked to a new place</string>
+    <string name="alert_signin_message_candigram_bounce">Sign in to kick candigrams.</string>
+    <string name="alert_dirty_exit_title_candigram">Candigram</string>
+    <string name="alert_dirty_exit_message_candigram">Do you want to start your candigram?</string>
+        
+    <string name="alert_candigram_bounce">Bouncing candigram</string>
+    <string name="alert_message_candigram_bounce">This candigram will be kicked to</string>
+    <string name="alert_promoted_candigram">Repeating candigram</string>
+    <string name="alert_message_candigram_expand">This candigram will be repeated to</string>
+    
+    <string name="alert_button_dirty_start">Start</string>
+    <string name="alert_button_bounce_follow">Follow</string>
+    <string name="alert_button_bounce">Kick!</string>
+    <string name="alert_button_expand_follow">Follow</string>
+    <string name="alert_button_expand">Repeat!</string>
+    
+    <!-- Errors -->
+    
+    <string name="error_missing_candigram_type">Select a candigram type.</string>
+    <string name="error_missing_candigram_range">Select the travel range.</string>
+    <string name="error_missing_candigram_hops">Select the maximum number of visits.</string>
+    <string name="error_missing_candigram_duration">Select the length of visit.</string>
+    <string name="error_missing_candigram_content">Select a photo or enter a message.</string>
+    <string name="error_missing_candigram_name">Enter a title.</string>    
+    
+    <!-- Labels -->
+    
+    <string name="label_forward">forward</string>
+    <string name="label_parked">parked</string>
+    <string name="label_type_candigrams">candigrams</string>
+    <string name="help_label_locked">[@string/name_app] users can browse but not add content</string>
+    
+    <string name="label_link_candigrams">candigrams</string>
+    <string name="label_link_candigrams_more">more candigrams</string>
+    <string name="label_section_candigrams_created">candigrams created</string>
+    <string name="label_section_candigrams_watching">candigrams watching</string>
+    
+    <string name="label_section_places">places visited so far</string>
+    <string name="label_section_candigram_applinks">pictures and comments</string>
+    <string name="section_candigram_shortcuts_applinks_can_add">add a picture or comment</string>
+    
+    <string name="label_candigram_wizard_type">Candigrams travel to places gathering pictures and comments as they go. Select the type of candigram you want to start!</string>
+    <string name="label_candigram_wizard_content">Add a picture, subject or message to your candigram.</string>
+    <string name="label_candigram_wizard_settings">Choose how your candigram travels and what other [@string/name_app] users can do with it.</string>
+    <string name="label_candigram_type_tour_verbose">touring</string>
+    <string name="label_candigram_type_bounce_verbose">bouncing</string>
+    <string name="label_candigram_current_place">currently at</string>
+    <string name="label_candigram_add_picture">add photo</string>
+    <string name="label_candigram_change_picture">change photo</string>
+    <string name="label_stats_places">place</string>
+    <string name="label_stats_places_plural">places</string>
+    
+    <!-- Progress -->
+    
+    <string name="progress_starting">Starting&#8230;</string>
+    <string name="progress_stopping">Stopping&#8230;</string>
+    <string name="progress_upsizing">Activating candigrams&#8230;</string>
+    
+    <!-- Dialogs -->
+    
+    <string name="dialog_application_candigram_new">Add a candigram</string>    
+
+    <!-- Hints -->
+    
+    <string name="hint_candigram_type">select candigram type</string>
+    <string name="hint_candigram_range">travel range</string>
+    <string name="hint_candigram_duration">length of visit</string>
+    <string name="hint_candigram_hops">number of visits</string>
+    <string name="hint_candigram_to">place to send</string>
+    <string name="hint_candigram_name">subject</string>
+    <string name="hint_candigram_description">message</string>
+    
+    <!-- Buttons -->
+    
+    <string name="button_candigram_finish">start</string>
+    <string name="button_candigram_bounce">kick</string>
+    <string name="button_candigram_expand">forward</string>
+	<string name="button_list_new_candigram">add a candigram</string>
+                
+    <!-- Testing (used for view designer) -->
+	
+    <string name="dummy_subtitle_notification">added a big fabulous candigram to a place you are watching very closely.</string>
+    <string name="dummy_label">candigram</string>
+    <string name="dummy_edit_hint" toolsignore="UnusedResources">How long a candigram will stay someplace before moving on</string>
+	
 </resources>

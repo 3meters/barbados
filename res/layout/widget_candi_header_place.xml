@@ -28,21 +28,21 @@
 
             <com.aircandi.ui.widgets.ComboButton
                 android:id="@+id/button_like"
-                style="@style/form_button"
-                android:layout_width="@dimen/form_button_height"
-                android:layout_height="@dimen/form_button_height"
+                style="@style/button"
+                android:layout_width="@dimen/button_height"
+                android:layout_height="@dimen/button_height"
                 android:layout_marginRight="3dp"
-                android:minWidth="@dimen/form_button_height"
+                android:minWidth="@dimen/button_height"
                 android:onClick="onLikeButtonClick"
                 custom:drawable="?attr/iconLike"
                 custom:layout="@layout/widget_combo_button_no_text" />
 
             <com.aircandi.ui.widgets.ComboButton
                 android:id="@+id/button_watch"
-                style="@style/form_button"
-                android:layout_width="@dimen/form_button_height"
-                android:layout_height="@dimen/form_button_height"
-                android:minWidth="@dimen/form_button_height"
+                style="@style/button"
+                android:layout_width="@dimen/button_height"
+                android:layout_height="@dimen/button_height"
+                android:minWidth="@dimen/button_height"
                 android:onClick="onWatchButtonClick"
                 custom:drawable="?attr/iconWatch"
                 custom:layout="@layout/widget_combo_button_no_text" />
@@ -50,11 +50,11 @@
 
         <com.aircandi.ui.widgets.ComboButton
             android:id="@+id/button_overflow"
-            style="@style/form_button"
-            android:layout_width="@dimen/form_button_height"
-            android:layout_height="@dimen/form_button_height"
+            style="@style/button"
+            android:layout_width="@dimen/button_height"
+            android:layout_height="@dimen/button_height"
             android:layout_weight="0"
-            android:minWidth="@dimen/form_button_height"
+            android:minWidth="@dimen/button_height"
             android:onClick="onOverflowButtonClick"
             custom:drawable="?attr/iconOverflow"
             custom:layout="@layout/widget_combo_button_no_text" />

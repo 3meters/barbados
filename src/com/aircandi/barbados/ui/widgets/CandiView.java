@@ -9,12 +9,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import com.aircandi.Constants;
+import com.aircandi.barbados.Constants;
 import com.aircandi.barbados.R;
-import com.aircandi.service.objects.Entity;
-import com.aircandi.service.objects.Link.Direction;
-import com.aircandi.service.objects.Shortcut;
-import com.aircandi.service.objects.ShortcutSettings;
+import com.aircandi.objects.Entity;
+import com.aircandi.objects.Link.Direction;
+import com.aircandi.objects.Shortcut;
+import com.aircandi.objects.ShortcutSettings;
 import com.aircandi.ui.widgets.AirImageView;
 import com.aircandi.utilities.Integers;
 import com.aircandi.utilities.UI;
@@ -79,7 +79,7 @@ public class CandiView extends com.aircandi.ui.widgets.CandiView {
 				for (Shortcut shortcut : shortcuts) {
 					if (shortcutCount < Integers.getInteger(R.integer.limit_indicators_radar)) {
 						View view = inflater.inflate(R.layout.temp_indicator_candigram, null);
-						AirImageView photoView = (AirImageView) view.findViewById(R.id.photo);
+						AirImageView photoView = (AirImageView) view.findViewById(R.id.entity_photo);
 						photoView.setSizeHint(sizePixels);
 
 						UI.drawPhoto(photoView, shortcut.getPhoto());

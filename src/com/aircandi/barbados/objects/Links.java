@@ -5,24 +5,24 @@ import java.util.ArrayList;
 import android.content.res.Resources;
 
 import com.aircandi.Aircandi;
-import com.aircandi.Constants;
+import com.aircandi.barbados.Constants;
 import com.aircandi.barbados.R;
-import com.aircandi.service.objects.Link.Direction;
-import com.aircandi.service.objects.LinkParams;
-import com.aircandi.service.objects.User;
+import com.aircandi.objects.Link.Direction;
+import com.aircandi.objects.LinkParams;
+import com.aircandi.objects.User;
 import com.aircandi.utilities.Maps;
 
 /**
  * @author Jayma
  */
-public class Links extends com.aircandi.service.objects.Links {
+public class Links extends com.aircandi.objects.Links {
 
 	private static final long	serialVersionUID	= 6358655034455139946L;
 
 	@Override
-	public com.aircandi.service.objects.Links build(LinkProfile linkProfile) {
+	public com.aircandi.objects.Links build(Integer linkProfile) {
 
-		com.aircandi.service.objects.Links links = null;
+		com.aircandi.objects.Links links = null;
 
 		if (linkProfile != LinkProfile.NO_LINKS) {
 

@@ -6,11 +6,11 @@ import android.widget.TextView;
 
 import com.aircandi.Constants;
 import com.aircandi.R;
+import com.aircandi.barbados.objects.EventType;
 import com.aircandi.components.RenderDelegate;
-import com.aircandi.service.objects.Action.EventType;
-import com.aircandi.service.objects.Count;
-import com.aircandi.service.objects.Link.Direction;
-import com.aircandi.service.objects.User;
+import com.aircandi.objects.Count;
+import com.aircandi.objects.Link.Direction;
+import com.aircandi.objects.User;
 import com.aircandi.ui.base.BaseEntityForm;
 import com.aircandi.utilities.UI;
 

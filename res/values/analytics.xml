@@ -9,7 +9,17 @@
     <string name="ga_trackingId">UA-33660954-4</string>
     
     <!-- The screen names that will appear in the reporting -->
-    <string name="com.aircandi.ui.AboutFormExtended">AboutForm</string>
-    <string name="com.aircandi.ui.PlaceFormExtended">PlaceForm</string>
+    
+    <string name="com.aircandi.barbados.ui.AboutForm">AboutForm</string>
+    <string name="com.aircandi.barbados.ui.PlaceForm">PlaceForm</string>
+    <string name="com.aircandi.barbados.ui.CandigramForm">CandigramForm</string>
+    <string name="com.aircandi.barbados.ui.AircandiForm">AircandiForm</string>
+    <string name="com.aircandi.barbados.ui.user.UserForm">UserForm</string>
+    
+    <!-- Edit -->
+
+    <string name="com.aircandi.barbados.ui.edit.CandigramEdit">CandigramEdit</string>
+    <string name="com.aircandi.barbados.ui.edit.CandigramWizard">CandigramWizard</string>
+    
     
 </resources>

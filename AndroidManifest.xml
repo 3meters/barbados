@@ -106,7 +106,7 @@
         <!-- Activities -->
 
         <activity
-            android:name="com.aircandi.ui.SplashForm"
+            android:name="com.aircandi.barbados.ui.SplashForm"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:theme="@style/aircandi_theme_midnight_notitlebar"
             android:windowSoftInputMode="stateHidden" >
@@ -116,11 +116,11 @@
             </intent-filter>
 		</activity>
         <activity
-            android:name="com.aircandi.ui.AircandiForm"
+            android:name="com.aircandi.barbados.ui.AircandiForm"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/name_app" />
         <activity
-            android:name="com.aircandi.ui.PlaceFormExtended"
+            android:name="com.aircandi.barbados.ui.PlaceForm"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/name_app"
             android:windowSoftInputMode="stateHidden" />
@@ -130,7 +130,12 @@
             android:label="@string/name_app"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name="com.aircandi.ui.CandigramForm"
+            android:name="com.aircandi.ui.CommentForm"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/form_title_comment"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.aircandi.barbados.ui.CandigramForm"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/name_app"
             android:windowSoftInputMode="stateHidden" >
@@ -138,7 +143,7 @@
 		        <action android:name="com.aircandi.action.CANDIGRAM_VIEW"/>
 		        <category android:name="android.intent.category.DEFAULT"/>
 		    </intent-filter>        
-        	</activity>
+        </activity>
         <activity
             android:name="com.aircandi.ui.MapForm"
             android:configChanges="orientation|keyboardHidden|screenSize"
@@ -147,12 +152,6 @@
         <activity
             android:name="com.aircandi.ui.EntityList"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/form_title_picture_browse"
-            android:windowSoftInputMode="stateHidden" />
-        <activity
-            android:name="com.aircandi.ui.EntityGrid"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/form_title_picture_browse"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name="com.aircandi.ui.HelpForm"
@@ -163,10 +162,9 @@
         <activity
             android:name="com.aircandi.ui.PhotoForm"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/form_title_picture_browse"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name="com.aircandi.ui.AboutFormExtended"
+            android:name="com.aircandi.barbados.ui.AboutForm"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/name_app"
             android:windowSoftInputMode="stateHidden" />
@@ -174,22 +172,17 @@
         <!-- Editing activities -->
 
         <activity
-            android:name="com.aircandi.ui.edit.PlaceEdit"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/name_app"
-            android:windowSoftInputMode="stateHidden" />
-        <activity
             android:name="com.aircandi.ui.edit.PictureEdit"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/name_app"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name="com.aircandi.ui.edit.MessageEdit"
+            android:name="com.aircandi.barbados.ui.edit.CandigramEdit"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/name_app"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name="com.aircandi.ui.edit.CandigramWizard"
+            android:name="com.aircandi.barbados.ui.edit.CandigramWizard"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/name_app"
             android:windowSoftInputMode="stateHidden" >
@@ -198,20 +191,6 @@
 		        <category android:name="android.intent.category.DEFAULT"/>
 		    </intent-filter>        
 		</activity>
-        <activity
-            android:name="com.aircandi.ui.edit.TuningEdit"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/form_title_tune"
-            android:windowSoftInputMode="stateHidden" />
-        <activity
-            android:name="com.aircandi.ui.edit.ApplinkEdit"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/name_app"
-            android:windowSoftInputMode="stateHidden" />
-        <activity
-            android:name="com.aircandi.ui.edit.ApplinkListEdit"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name="com.aircandi.ui.edit.CommentEdit"
             android:configChanges="orientation|keyboardHidden|screenSize"
@@ -236,12 +215,12 @@
         <!-- User activities -->
 
         <activity
-            android:name="com.aircandi.ui.user.ProfileFormExtended"
+            android:name="com.aircandi.barbados.ui.user.ProfileForm"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/name_app"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name="com.aircandi.ui.user.UserFormExtended"
+            android:name="com.aircandi.barbados.ui.user.UserForm"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/name_app"
             android:windowSoftInputMode="stateHidden" />
@@ -278,10 +257,6 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name="com.aircandi.ui.helpers.PlacePicker"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:windowSoftInputMode="stateHidden" />
-        <activity
             android:name="com.aircandi.ui.helpers.ApplicationPicker"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:theme="@style/aircandi_theme_dialog_dark"
@@ -293,16 +268,6 @@
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name="com.aircandi.ui.helpers.ShortcutPicker"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:theme="@style/aircandi_theme_dialog_dark"
-            android:windowSoftInputMode="stateHidden" />
-        <activity
-            android:name="com.aircandi.ui.helpers.AddressBuilder"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:theme="@style/aircandi_theme_dialog_dark"
-            android:windowSoftInputMode="adjustResize" />
-        <activity
-            android:name="com.aircandi.ui.helpers.CategoryBuilder"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:theme="@style/aircandi_theme_dialog_dark"
             android:windowSoftInputMode="stateHidden" />
