@@ -59,7 +59,7 @@
     <string name="label_forward">forward</string>
     <string name="label_parked">parked</string>
     <string name="label_type_candigrams">candigrams</string>
-    <string name="help_label_locked">[@string/name_app] users can browse but not add content</string>
+    <string name="label_locked_description">[@string/name_app] users can browse but not add content</string>
     
     <string name="label_link_candigrams">candigrams</string>
     <string name="label_link_candigrams_more">more candigrams</string>

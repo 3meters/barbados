@@ -392,7 +392,7 @@ public class CandigramForm extends BaseEntityForm {
 
 			@Override
 			protected void onPreExecute() {
-				showBusy();
+				mBusy.showBusy();
 			}
 
 			@Override
@@ -409,7 +409,7 @@ public class CandigramForm extends BaseEntityForm {
 			protected void onPostExecute(Object response) {
 				ModelResult result = (ModelResult) response;
 				setSupportProgressBarIndeterminateVisibility(false);
-				hideBusy();
+				mBusy.hideBusy();
 				if (result.serviceResponse.responseCode == ResponseCode.SUCCESS) {
 					if (result.data != null) {
 						List<Entity> entities = (List<Entity>) result.data;
@@ -493,7 +493,7 @@ public class CandigramForm extends BaseEntityForm {
 
 			@Override
 			protected void onPreExecute() {
-				showBusy();
+				mBusy.showBusy();
 			}
 
 			@Override
@@ -507,7 +507,7 @@ public class CandigramForm extends BaseEntityForm {
 			protected void onPostExecute(Object response) {
 				ModelResult result = (ModelResult) response;
 				setSupportProgressBarIndeterminateVisibility(false);
-				hideBusy();
+				mBusy.hideBusy();
 				if (result.serviceResponse.responseCode == ResponseCode.SUCCESS) {
 					if (follow) {
 						IEntityController controller = Aircandi.getInstance().getControllerForSchema(entity.schema);
@@ -574,7 +574,7 @@ public class CandigramForm extends BaseEntityForm {
 
 			@Override
 			protected void onPreExecute() {
-				showBusy();
+				mBusy.showBusy();
 			}
 
 			@Override
@@ -588,7 +588,7 @@ public class CandigramForm extends BaseEntityForm {
 			protected void onPostExecute(Object response) {
 				ModelResult result = (ModelResult) response;
 				setSupportProgressBarIndeterminateVisibility(false);
-				hideBusy();
+				mBusy.hideBusy();
 				if (result.serviceResponse.responseCode == ResponseCode.SUCCESS) {
 					if (follow) {
 						IEntityController controller = Aircandi.getInstance().getControllerForSchema(entity.schema);

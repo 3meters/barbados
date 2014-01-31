@@ -25,8 +25,7 @@ import com.aircandi.R;
 import com.aircandi.barbados.Constants;
 import com.aircandi.barbados.queries.ActivitiesQuery;
 import com.aircandi.barbados.ui.ShortcutFragment;
-import com.aircandi.monitors.EntitiesMonitor;
-import com.aircandi.monitors.ShortcutsMonitor;
+import com.aircandi.monitors.CurrentUserMonitor;
 import com.aircandi.queries.ShortcutsQuery;
 import com.aircandi.ui.ActivityFragment;
 import com.aircandi.ui.base.BaseFragment;
@@ -51,13 +50,15 @@ public class FragmentTabPager extends com.aircandi.ui.components.FragmentTabPage
 		 * Fragment menu items are in addition to any menu items added by the parent activity.
 		 */
 		if (info.extras.getString(Constants.EXTRA_FRAGMENT_TYPE).equals(Constants.FRAGMENT_TYPE_RADAR)) {
+			
 			((BaseFragment)fragment).getMenuResIds().add(R.menu.menu_beacons);
 			((BaseFragment)fragment).getMenuResIds().add(R.menu.menu_refresh_special);						
 			((BaseFragment)fragment).getMenuResIds().add(R.menu.menu_help);
 		}
+		
 		else if (info.extras.getString(Constants.EXTRA_FRAGMENT_TYPE).equals(Constants.FRAGMENT_TYPE_WATCH)) {
 
-			ShortcutsMonitor monitor = new ShortcutsMonitor();
+			CurrentUserMonitor monitor = new CurrentUserMonitor();
 			ShortcutsQuery query = new ShortcutsQuery().setEntityId(Aircandi.getInstance().getCurrentUser().id);
 
 			((ShortcutFragment) fragment)
@@ -68,9 +69,10 @@ public class FragmentTabPager extends com.aircandi.ui.components.FragmentTabPage
 
 			((BaseFragment) fragment).getMenuResIds().add(R.menu.menu_refresh);
 		}
+		
 		else if (info.extras.getString(Constants.EXTRA_FRAGMENT_TYPE).equals(Constants.FRAGMENT_TYPE_CREATE)) {
 
-			ShortcutsMonitor monitor = new ShortcutsMonitor();
+			CurrentUserMonitor monitor = new CurrentUserMonitor();
 			ShortcutsQuery query = new ShortcutsQuery().setEntityId(Aircandi.getInstance().getCurrentUser().id);
 
 			((ShortcutFragment) fragment)
@@ -81,9 +83,10 @@ public class FragmentTabPager extends com.aircandi.ui.components.FragmentTabPage
 
 			((BaseFragment) fragment).getMenuResIds().add(R.menu.menu_refresh);
 		}
+		
 		else if (info.extras.getString(Constants.EXTRA_FRAGMENT_TYPE).equals(Constants.FRAGMENT_TYPE_ACTIVITY)) {
 			
-			EntitiesMonitor monitor = new EntitiesMonitor(Aircandi.getInstance().getCurrentUser().id);
+			CurrentUserMonitor monitor = new CurrentUserMonitor();
 			ActivitiesQuery query = new ActivitiesQuery()
 					.setEntityId(Aircandi.getInstance().getCurrentUser().id)
 					.setPageSize(Integers.getInteger(R.integer.page_size_activities));
