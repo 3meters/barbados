@@ -8,11 +8,14 @@ import android.os.Bundle;
 
 import com.aircandi.Constants;
 import com.aircandi.barbados.ui.AircandiForm;
+import com.aircandi.barbados.ui.SplashForm;
+import com.aircandi.components.AnimationManager;
 import com.aircandi.components.IntentBuilder;
 import com.aircandi.objects.Entity;
 import com.aircandi.objects.Route;
 import com.aircandi.objects.Shortcut;
 import com.aircandi.objects.TransitionType;
+import com.aircandi.ui.base.BaseActivity;
 
 public class DispatchManager extends com.aircandi.components.DispatchManager {
 
@@ -39,6 +42,23 @@ public class DispatchManager extends com.aircandi.components.DispatchManager {
 
 			activity.startActivity(intent);
 			AnimationManager.getInstance().doOverridePendingTransition(activity, TransitionType.PAGE_TO_HELP);
+			return;
+		}
+		
+		else if (route == Route.SPLASH) {
+
+			final IntentBuilder intentBuilder = new IntentBuilder(activity, SplashForm.class);
+			final Intent intent = intentBuilder.create();
+			intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			if (Constants.SUPPORTS_HONEYCOMB) {
+				intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+			}
+			if (activity instanceof BaseActivity) {
+				((BaseActivity) activity).setResultCode(Activity.RESULT_CANCELED);
+			}
+			activity.startActivity(intent);
+			activity.finish();
+			AnimationManager.getInstance().doOverridePendingTransition(activity, TransitionType.FORM_TO_PAGE);
 			return;
 		}
 

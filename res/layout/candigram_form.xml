@@ -61,8 +61,8 @@
                     android:scaleType="centerCrop"
                     custom:layout="@layout/widget_webimageview_zoom"
                     custom:sizeHint="@dimen/image_extra_extra_large" />
-                    android:onClick="onPhotoClick"
-                
+                    android:onClick="onPhotoClick"
+
                 <include
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -164,10 +164,10 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/entity_photo"
                     android:layout_marginBottom="8dp"
-                    custom:label="@string/label_candigram_current_place"
                     android:background="@drawable/selector_button"
                     android:clickable="true"
-                    android:onClick="onEntityClick" />
+                    android:onClick="onEntityClick"
+                    custom:label="@string/label_candigram_current_place" />
 
                 <LinearLayout
                     android:id="@+id/holder_title"
@@ -209,6 +209,7 @@
                         android:id="@+id/description"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:textIsSelectable="true"
                         android:visibility="visible"
                         custom:textId="@string/dummy_description" />
                 </com.aircandi.ui.widgets.SectionLayout>

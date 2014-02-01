@@ -164,7 +164,7 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name="com.aircandi.barbados.ui.AboutForm"
+            android:name="com.aircandi.ui.AboutForm"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/name_app"
             android:windowSoftInputMode="stateHidden" />

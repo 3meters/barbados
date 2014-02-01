@@ -8,13 +8,19 @@
 
     <string name="ga_trackingId">UA-33660954-4</string>
     
-    <!-- The screen names that will appear in the reporting -->
+    <!-- 
+    	- All default settings and screen names come from aircandi/res/values/analytics.xml.
+    	- To override a setting or screen name, add it here using the same name.
+    	- To add a screen name, add it here.
+    -->
+        
+    <!-- The screen names and name overrides that will appear in the reporting -->
     
-    <string name="com.aircandi.barbados.ui.AboutForm">AboutForm</string>
     <string name="com.aircandi.barbados.ui.PlaceForm">PlaceForm</string>
     <string name="com.aircandi.barbados.ui.CandigramForm">CandigramForm</string>
     <string name="com.aircandi.barbados.ui.AircandiForm">AircandiForm</string>
     <string name="com.aircandi.barbados.ui.user.UserForm">UserForm</string>
+    <string name="com.aircandi.barbados.ui.SplashForm">SplashForm</string>
     
     <!-- Edit -->
 
