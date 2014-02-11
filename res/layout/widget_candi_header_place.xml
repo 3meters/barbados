@@ -28,42 +28,38 @@
 
             <com.aircandi.ui.widgets.ComboButton
                 android:id="@+id/button_like"
-                style="@style/button"
+                style="@style/button_link"
                 android:layout_width="@dimen/button_height"
                 android:layout_height="@dimen/button_height"
                 android:layout_marginRight="3dp"
                 android:minWidth="@dimen/button_height"
                 android:onClick="onLikeButtonClick"
-                custom:drawable="?attr/iconLike"
-                custom:layout="@layout/widget_combo_button_no_text" />
+                custom:drawable="?attr/iconLike" />
 
             <com.aircandi.ui.widgets.ComboButton
                 android:id="@+id/button_watch"
-                style="@style/button"
+                style="@style/button_link"
                 android:layout_width="@dimen/button_height"
                 android:layout_height="@dimen/button_height"
                 android:minWidth="@dimen/button_height"
                 android:onClick="onWatchButtonClick"
-                custom:drawable="?attr/iconWatch"
-                custom:layout="@layout/widget_combo_button_no_text" />
+                custom:drawable="?attr/iconWatch" />
         </LinearLayout>
 
         <com.aircandi.ui.widgets.ComboButton
             android:id="@+id/button_overflow"
-            style="@style/button"
+            style="@style/button_link"
             android:layout_width="@dimen/button_height"
             android:layout_height="@dimen/button_height"
             android:layout_weight="0"
             android:minWidth="@dimen/button_height"
             android:onClick="onOverflowButtonClick"
-            custom:drawable="?attr/iconOverflow"
-            custom:layout="@layout/widget_combo_button_no_text" />
+            custom:drawable="?attr/iconOverflow" />
 
         <com.aircandi.ui.widgets.AirTextView
             android:id="@+id/candi_form_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textIsSelectable="true"
             android:visibility="gone"
             tools:text="@string/dummy_description" />
     </LinearLayout>

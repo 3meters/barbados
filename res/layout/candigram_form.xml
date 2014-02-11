@@ -1,281 +1,297 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.aircandi.ui.widgets.BounceScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:custom="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/scroll_view"
+    android:id="@+id/form_holder"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_alignParentTop="true"
-    android:background="?attr/backgroundCandi"
-    android:descendantFocusability="blocksDescendants"
-    android:fillViewport="true"
-    android:focusable="false"
-    android:focusableInTouchMode="false"
-    android:visibility="gone" >
+    android:layout_height="match_parent" >
 
-    <RelativeLayout
-        style="@style/form_content_layout"
+    <com.aircandi.ui.widgets.BounceScrollView
+        android:id="@+id/scroll_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:background="?attr/backgroundCandi"
+        android:descendantFocusability="blocksDescendants"
+        android:fillViewport="true"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:visibility="gone" >
 
-        <!-- Main body -->
-
-        <LinearLayout
-            android:id="@+id/holder_body"
+        <RelativeLayout
+            style="@style/form_content_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:orientation="vertical" >
+            android:layout_height="wrap_content" >
+
+            <!-- Main body -->
 
             <LinearLayout
+                android:id="@+id/holder_body"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingBottom="10dp" >
-
-                <com.aircandi.ui.widgets.AirTextLight
-                    android:id="@+id/header"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@color/accent_blue"
-                    custom:textId="@string/form_title_candigram" />
-
-                <View
-                    android:id="@+id/rule"
-                    android:layout_width="match_parent"
-                    android:layout_height="1px"
-                    android:background="?attr/ruleColorStrong" />
-            </LinearLayout>
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="15dp" >
-
-                <com.aircandi.ui.widgets.AirImageView
-                    android:id="@+id/entity_photo"
-                    android:layout_width="@dimen/image_extra_extra_large"
-                    android:layout_height="@dimen/image_extra_extra_large"
-                    android:background="@drawable/selector_image"
-                    android:clickable="true"
-                    android:scaleType="centerCrop"
-                    custom:layout="@layout/widget_webimageview_zoom"
-                    custom:sizeHint="@dimen/image_extra_extra_large" />
-                    android:onClick="onPhotoClick"
-
-                <include
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_alignBottom="@+id/entity_photo"
-                    android:layout_alignTop="@+id/entity_photo"
-                    android:layout_marginLeft="3dp"
-                    android:layout_toRightOf="@+id/entity_photo"
-                    layout="@layout/widget_candi_header_vertical" />
-
-                <com.aircandi.ui.widgets.AirTextView
-                    android:id="@+id/action_info"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/entity_photo"
-                    android:layout_marginLeft="5dp"
-                    android:layout_toRightOf="@+id/entity_photo"
-                    android:textColor="?attr/textColorButtonLink"
-                    android:visibility="invisible" />
+                android:layout_marginBottom="8dp"
+                android:orientation="vertical" >
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/entity_photo"
-                    android:layout_alignLeft="@+id/entity_photo"
-                    android:layout_alignRight="@+id/entity_photo"
-                    android:layout_margin="3dp"
-                    android:background="@drawable/overlay_picture"
-                    android:orientation="horizontal"
-                    android:paddingBottom="5dp"
-                    android:paddingLeft="15dp"
-                    android:paddingRight="5dp"
-                    android:paddingTop="5dp" >
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="5dp"
-                        android:orientation="horizontal" >
-
-                        <ImageView
-                            android:layout_width="@dimen/image_tiny"
-                            android:layout_height="@dimen/image_tiny"
-                            android:layout_marginRight="3dp"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/ic_like_holo_dark" />
-
-                        <com.aircandi.ui.widgets.AirTextView
-                            android:id="@+id/like_stats"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginRight="3dp"
-                            android:gravity="center_vertical"
-                            android:textAppearance="@style/textAppearanceExtraSmall"
-                            android:textColor="?attr/textColorCandiView"
-                            android:visibility="visible"
-                            custom:textId="@string/dummy_number" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="5dp"
-                        android:orientation="horizontal" >
-
-                        <ImageView
-                            android:layout_width="@dimen/image_tiny"
-                            android:layout_height="@dimen/image_tiny"
-                            android:layout_marginRight="3dp"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/ic_watched_holo_dark" />
-
-                        <com.aircandi.ui.widgets.AirTextView
-                            android:id="@+id/watching_stats"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginRight="3dp"
-                            android:gravity="center_vertical"
-                            android:textAppearance="@style/textAppearanceExtraSmall"
-                            android:textColor="?attr/textColorCandiView"
-                            android:visibility="visible"
-                            custom:textId="@string/dummy_number" />
-                    </LinearLayout>
-
-                    <com.aircandi.ui.widgets.AirTextView
-                        android:id="@+id/places_stats"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:textColor="?attr/textColorCandiView"
-                        android:visibility="gone"
-                        custom:textId="@string/dummy_place_stat" />
-                </LinearLayout>
-
-                <!-- Current place -->
-
-                <com.aircandi.ui.widgets.EntityView
-                    android:id="@+id/place"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/entity_photo"
-                    android:layout_marginBottom="8dp"
-                    android:background="@drawable/selector_button"
-                    android:clickable="true"
-                    android:onClick="onEntityClick"
-                    custom:label="@string/label_candigram_current_place" />
-
-                <LinearLayout
-                    android:id="@+id/holder_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/place"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginTop="8dp"
-                    android:orientation="vertical" >
+                    android:orientation="vertical"
+                    android:paddingBottom="10dp" >
 
                     <com.aircandi.ui.widgets.AirTextLight
-                        android:id="@+id/name"
+                        android:id="@+id/header"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textStyle="bold"
-                        custom:textId="@string/dummy_name" />
+                        android:textColor="@color/accent_blue"
+                        custom:textId="@string/form_title_candigram" />
 
-                    <com.aircandi.ui.widgets.AirTextView
-                        android:id="@+id/subtitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="3dp"
-                        android:textStyle="italic"
-                        custom:textId="@string/dummy_tags" />
+                    <View
+                        android:id="@+id/rule"
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:background="?attr/ruleColorStrong" />
                 </LinearLayout>
 
-                <com.aircandi.ui.widgets.SectionLayout
-                    android:id="@+id/section_description"
-                    style="@style/candi_form_section"
-                    android:layout_width="match_parent"
+                <RelativeLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/holder_title"
-                    android:layout_marginBottom="10dp"
-                    android:orientation="vertical"
-                    custom:layoutHeader="@layout/temp_section_header" >
+                    android:layout_marginBottom="15dp" >
+
+                    <FrameLayout
+                        android:id="@+id/holder_photo"
+                        style="@style/selectable_image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:onClick="onPhotoClick" >
+
+                        <com.aircandi.ui.widgets.AirImageView
+                            android:id="@+id/entity_photo"
+                            android:layout_width="@dimen/image_extra_extra_large"
+                            android:layout_height="@dimen/image_extra_extra_large"
+                            android:scaleType="centerCrop"
+                            custom:layout="@layout/widget_webimageview_zoom"
+                            custom:sizeHint="@dimen/image_extra_extra_large" />
+                    </FrameLayout>
+
+                    <include
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignBottom="@+id/holder_photo"
+                        android:layout_alignTop="@+id/holder_photo"
+                        android:layout_marginLeft="3dp"
+                        android:layout_toRightOf="@+id/holder_photo"
+                        layout="@layout/widget_candi_header_vertical" />
 
                     <com.aircandi.ui.widgets.AirTextView
-                        android:id="@+id/description"
+                        android:id="@+id/action_info"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textIsSelectable="true"
-                        android:visibility="visible"
-                        custom:textId="@string/dummy_description" />
-                </com.aircandi.ui.widgets.SectionLayout>
-            </RelativeLayout>
-        </LinearLayout>
+                        android:layout_alignBottom="@+id/holder_photo"
+                        android:layout_marginLeft="5dp"
+                        android:layout_toRightOf="@+id/holder_photo"
+                        android:textColor="?attr/textColorButtonLink"
+                        android:visibility="invisible" />
 
-        <LinearLayout
-            android:id="@+id/holder_shortcuts"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/holder_body"
-            android:layout_marginBottom="8dp"
-            android:orientation="vertical" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/holder_photo"
+                        android:layout_alignLeft="@+id/holder_photo"
+                        android:layout_alignRight="@+id/holder_photo"
+                        android:layout_margin="3dp"
+                        android:background="@drawable/overlay_picture"
+                        android:orientation="horizontal"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="5dp" >
 
-        <LinearLayout
-            android:id="@+id/holder_authoring"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_below="@+id/holder_shortcuts"
-            android:baselineAligned="false"
-            android:gravity="bottom"
-            android:orientation="horizontal" >
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="5dp"
+                            android:orientation="horizontal" >
 
-            <FrameLayout
+                            <ImageView
+                                android:layout_width="@dimen/image_tiny"
+                                android:layout_height="@dimen/image_tiny"
+                                android:layout_marginRight="3dp"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/ic_like_holo_dark" />
+
+                            <com.aircandi.ui.widgets.AirTextView
+                                android:id="@+id/like_stats"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginRight="3dp"
+                                android:gravity="center_vertical"
+                                android:textAppearance="@style/textAppearanceExtraSmall"
+                                android:textColor="?attr/textColorCandiView"
+                                android:visibility="visible"
+                                custom:textId="@string/dummy_number" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="5dp"
+                            android:orientation="horizontal" >
+
+                            <ImageView
+                                android:layout_width="@dimen/image_tiny"
+                                android:layout_height="@dimen/image_tiny"
+                                android:layout_marginRight="3dp"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/ic_watched_holo_dark" />
+
+                            <com.aircandi.ui.widgets.AirTextView
+                                android:id="@+id/watching_stats"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginRight="3dp"
+                                android:gravity="center_vertical"
+                                android:textAppearance="@style/textAppearanceExtraSmall"
+                                android:textColor="?attr/textColorCandiView"
+                                android:visibility="visible"
+                                custom:textId="@string/dummy_number" />
+                        </LinearLayout>
+
+                        <com.aircandi.ui.widgets.AirTextView
+                            android:id="@+id/places_stats"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:textColor="?attr/textColorCandiView"
+                            android:visibility="gone"
+                            custom:textId="@string/dummy_place_stat" />
+                    </LinearLayout>
+
+                    <!-- Current place -->
+
+                    <com.aircandi.ui.widgets.EntityView
+                        android:id="@+id/place"
+                        style="@style/selectable_item"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/holder_photo"
+                        android:layout_marginBottom="8dp"
+                        android:clickable="true"
+                        android:onClick="onEntityClick"
+                        custom:label="@string/label_candigram_current_place" />
+
+                    <LinearLayout
+                        android:id="@+id/holder_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/place"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="8dp"
+                        android:orientation="vertical" >
+
+                        <com.aircandi.ui.widgets.AirTextLight
+                            android:id="@+id/name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textStyle="bold"
+                            custom:textId="@string/dummy_name" />
+
+                        <com.aircandi.ui.widgets.AirTextView
+                            android:id="@+id/subtitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="3dp"
+                            android:textStyle="italic"
+                            custom:textId="@string/dummy_tags" />
+                    </LinearLayout>
+
+                    <com.aircandi.ui.widgets.SectionLayout
+                        android:id="@+id/section_description"
+                        style="@style/candi_form_section"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/holder_title"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="vertical"
+                        custom:layoutHeader="@layout/temp_section_header" >
+
+                        <com.aircandi.ui.widgets.AirTextView
+                            android:id="@+id/description"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:visibility="visible"
+                            custom:textId="@string/dummy_description" />
+                    </com.aircandi.ui.widgets.SectionLayout>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/holder_shortcuts"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" >
+                android:layout_below="@+id/holder_body"
+                android:layout_marginBottom="8dp"
+                android:orientation="vertical" />
 
-                <com.aircandi.ui.widgets.UserView
-                    android:id="@+id/user_one"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="2dp"
-                    android:background="?attr/backgroundButton"
-                    android:clickable="true"
-                    android:onClick="onEntityClick"
-                    custom:layout="@layout/widget_user_view_detailed" />
-            </FrameLayout>
-
-            <FrameLayout
+            <LinearLayout
+                android:id="@+id/holder_authoring"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" >
+                android:layout_alignParentBottom="true"
+                android:layout_below="@+id/holder_shortcuts"
+                android:baselineAligned="false"
+                android:gravity="bottom"
+                android:orientation="horizontal" >
 
-                <com.aircandi.ui.widgets.UserView
-                    android:id="@+id/user_two"
+                <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="2dp"
-                    android:background="?attr/backgroundButton"
-                    android:clickable="true"
-                    android:onClick="onEntityClick"
-                    custom:layout="@layout/widget_user_view_detailed" />
-            </FrameLayout>
-        </LinearLayout>
+                    android:layout_weight="1" >
 
-        <ProgressBar
-            android:id="@+id/progress"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_centerInParent="true"
-            android:layout_marginTop="35dp"
-            android:background="?attr/backgroundProgress"
-            android:padding="10dp"
-            android:visibility="gone" />
-    </RelativeLayout>
+                    <com.aircandi.ui.widgets.UserView
+                        android:id="@+id/user_one"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="2dp"
+                        android:background="?attr/backgroundButton"
+                        android:clickable="true"
+                        android:onClick="onEntityClick"
+                        custom:layout="@layout/widget_user_view_detailed" />
+                </FrameLayout>
 
-</com.aircandi.ui.widgets.BounceScrollView>
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" >
+
+                    <com.aircandi.ui.widgets.UserView
+                        android:id="@+id/user_two"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:background="?attr/backgroundButton"
+                        android:clickable="true"
+                        android:onClick="onEntityClick"
+                        custom:layout="@layout/widget_user_view_detailed" />
+                </FrameLayout>
+            </LinearLayout>
+
+            <ProgressBar
+                android:id="@+id/progress"
+                style="@style/progress"
+                android:layout_width="@dimen/progress_width"
+                android:layout_height="@dimen/progress_height"
+                android:visibility="gone" />
+
+            <fr.castorflex.android.smoothprogressbar.SmoothProgressBar
+                android:id="@+id/progress_bar"
+                style="@style/progress_bar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/progress_bar_height"
+                android:indeterminate="true"
+                android:visibility="gone" />
+        </RelativeLayout>
+    </com.aircandi.ui.widgets.BounceScrollView>
+
+</RelativeLayout>

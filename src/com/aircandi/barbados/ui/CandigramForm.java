@@ -12,7 +12,7 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,6 +44,7 @@ import com.aircandi.objects.Shortcut;
 import com.aircandi.objects.ShortcutSettings;
 import com.aircandi.objects.User;
 import com.aircandi.ui.base.BaseEntityForm;
+import com.aircandi.ui.base.IBusy.BusyAction;
 import com.aircandi.ui.widgets.AirImageView;
 import com.aircandi.ui.widgets.CandiView;
 import com.aircandi.ui.widgets.CandiView.IndicatorOptions;
@@ -102,6 +103,7 @@ public class CandigramForm extends BaseEntityForm {
 
 		final CandiView candiView = (CandiView) findViewById(R.id.candi_view);
 		final AirImageView photoView = (AirImageView) findViewById(R.id.entity_photo);
+		final View photoHolder = findViewById(R.id.holder_photo);
 		final TextView name = (TextView) findViewById(R.id.name);
 		final TextView subtitle = (TextView) findViewById(R.id.subtitle);
 
@@ -123,7 +125,7 @@ public class CandigramForm extends BaseEntityForm {
 				int widgetWidthDp = 122;
 				if (screenWidthDp - widgetWidthDp <= 264) {
 					int photoViewWidth = UI.getRawPixelsForDisplayPixels(this, screenWidthDp - widgetWidthDp);
-					RelativeLayout.LayoutParams paramsImage = new RelativeLayout.LayoutParams(photoViewWidth, photoViewWidth);
+					FrameLayout.LayoutParams paramsImage = new FrameLayout.LayoutParams(photoViewWidth, photoViewWidth);
 					photoView.setLayoutParams(paramsImage);
 				}
 
@@ -131,25 +133,33 @@ public class CandigramForm extends BaseEntityForm {
 					Photo photo = mEntity.getPhoto();
 					UI.drawPhoto(photoView, photo);
 					if (Type.isFalse(photo.usingDefault)) {
-						photoView.setClickable(true);
+						if (photoHolder != null) {
+							photoHolder.setClickable(true);
+						}
+						else {
+							photoView.setClickable(true);
+						}
 					}
 				}
 				UI.setVisibility(photoView, View.VISIBLE);
 			}
 
-			name.setText(null);
-			subtitle.setText(null);
-
 			UI.setVisibility(name, View.GONE);
-			if (name != null && mEntity.name != null && !mEntity.name.equals("")) {
-				name.setText(Html.fromHtml(mEntity.name));
-				UI.setVisibility(name, View.VISIBLE);
+			if (name != null) {
+				name.setText(null);
+				if (mEntity.name != null && !mEntity.name.equals("")) {
+					name.setText(Html.fromHtml(mEntity.name));
+					UI.setVisibility(name, View.VISIBLE);
+				}
 			}
 
 			UI.setVisibility(subtitle, View.GONE);
-			if (subtitle != null && mEntity.subtitle != null && !mEntity.subtitle.equals("")) {
-				subtitle.setText(Html.fromHtml(mEntity.subtitle));
-				UI.setVisibility(subtitle, View.VISIBLE);
+			if (subtitle != null) {
+				subtitle.setText(null);
+				if (mEntity.subtitle != null && !mEntity.subtitle.equals("")) {
+					subtitle.setText(Html.fromHtml(mEntity.subtitle));
+					UI.setVisibility(subtitle, View.VISIBLE);
+				}
 			}
 		}
 
@@ -188,7 +198,7 @@ public class CandigramForm extends BaseEntityForm {
 			Link link = candigram.getParentLink(Constants.TYPE_LINK_CONTENT, Constants.SCHEMA_ENTITY_PLACE);
 			if (link != null && link.shortcut != null) {
 				Entity place = link.shortcut.getAsEntity();
-				placeView.setLabel("currently at");
+				placeView.setLabel(R.string.label_candigram_current_place);
 				placeView.databind(place);
 				UI.setVisibility(placeView, View.VISIBLE);
 			}
@@ -262,7 +272,7 @@ public class CandigramForm extends BaseEntityForm {
 
 			if (mEntity.schema.equals(Constants.SCHEMA_ENTITY_PLACE)) {
 				if (((Place) mEntity).getProvider().type.equals("aircandi")) {
-					user.setLabel(StringManager.getString(R.string.label_created_by));
+					user.setLabel(R.string.label_created_by);
 					user.databind(mEntity.creator, mEntity.createdDate.longValue(), mEntity.locked);
 					UI.setVisibility(user, View.VISIBLE);
 					user = user_two;
@@ -270,10 +280,10 @@ public class CandigramForm extends BaseEntityForm {
 			}
 			else {
 				if (mEntity.schema.equals(Constants.SCHEMA_ENTITY_PICTURE)) {
-					user.setLabel(StringManager.getString(R.string.label_added_by));
+					user.setLabel(R.string.label_added_by);
 				}
 				else {
-					user.setLabel(StringManager.getString(R.string.label_created_by));
+					user.setLabel(R.string.label_created_by);
 				}
 				user.databind(mEntity.creator, mEntity.createdDate.longValue(), mEntity.locked);
 				UI.setVisibility(user_one, View.VISIBLE);
@@ -287,7 +297,7 @@ public class CandigramForm extends BaseEntityForm {
 				&& !mEntity.modifier.id.equals(ServiceConstants.ADMIN_USER_ID)
 				&& !mEntity.modifier.id.equals(ServiceConstants.ANONYMOUS_USER_ID)) {
 			if (mEntity.createdDate.longValue() != mEntity.modifiedDate.longValue()) {
-				user.setLabel(StringManager.getString(R.string.label_edited_by));
+				user.setLabel(R.string.label_edited_by);
 				user.databind(mEntity.modifier, mEntity.modifiedDate.longValue(), null);
 				UI.setVisibility(user, View.VISIBLE);
 			}
@@ -392,7 +402,7 @@ public class CandigramForm extends BaseEntityForm {
 
 			@Override
 			protected void onPreExecute() {
-				mBusy.showBusy();
+				mBusy.showBusy(mLoaded ? BusyAction.Refreshing : BusyAction.Loading);
 			}
 
 			@Override
@@ -493,7 +503,7 @@ public class CandigramForm extends BaseEntityForm {
 
 			@Override
 			protected void onPreExecute() {
-				mBusy.showBusy();
+				mBusy.showBusy(mLoaded ? BusyAction.Refreshing : BusyAction.Loading);
 			}
 
 			@Override
@@ -574,7 +584,7 @@ public class CandigramForm extends BaseEntityForm {
 
 			@Override
 			protected void onPreExecute() {
-				mBusy.showBusy();
+				mBusy.showBusy(mLoaded ? BusyAction.Refreshing : BusyAction.Loading);
 			}
 
 			@Override

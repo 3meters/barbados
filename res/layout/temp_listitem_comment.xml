@@ -2,9 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:custom="http://schemas.android.com/apk/res-auto"
     android:id="@+id/item_row"
+    style="@style/selectable_item"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/selector_button"
     android:baselineAligned="false"
     android:orientation="horizontal"
     android:padding="10dp" >
@@ -75,8 +75,6 @@
             android:layout_marginBottom="5dp"
             android:ellipsize="end"
             android:maxLines="5"
-            android:text="@string/dummy_message"
-            android:textIsSelectable="true"
             custom:textId="@string/dummy_message" />
 
         <LinearLayout
@@ -93,7 +91,6 @@
                 android:textColor="?attr/textColorSecondary"
                 custom:textId="@string/dummy_datetime" />
         </LinearLayout>
-
     </LinearLayout>
 
 </LinearLayout>

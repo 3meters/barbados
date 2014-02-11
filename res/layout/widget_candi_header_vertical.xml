@@ -12,25 +12,25 @@
         android:layout_height="match_parent"
         android:orientation="vertical" >
 
-        <com.aircandi.ui.widgets.AirButton
+        <com.aircandi.ui.widgets.ComboButton
             android:id="@+id/button_bounce"
-            style="@style/button_floating"
+            style="@style/button_link"
             android:layout_width="match_parent"
             android:layout_height="@dimen/button_height"
             android:layout_marginBottom="3dp"
             android:onClick="onBounceButtonClick"
             android:visibility="gone"
-            custom:textId="@string/button_candigram_bounce" />
+            custom:label="@string/button_candigram_bounce" />
 
-        <com.aircandi.ui.widgets.AirButton
+        <com.aircandi.ui.widgets.ComboButton
             android:id="@+id/button_expand"
-            style="@style/button_floating"
+            style="@style/button_link"
             android:layout_width="match_parent"
             android:layout_height="@dimen/button_height"
             android:layout_marginBottom="3dp"
             android:onClick="onExpandButtonClick"
             android:visibility="gone"
-            custom:textId="@string/button_candigram_expand" />
+            custom:label="@string/button_candigram_expand" />
 
         <LinearLayout
             android:id="@+id/button_holder"
@@ -41,36 +41,33 @@
 
             <com.aircandi.ui.widgets.ComboButton
                 android:id="@+id/button_like"
-                style="@style/button"
+                style="@style/button_link"
                 android:layout_width="@dimen/button_height"
                 android:layout_height="@dimen/button_height"
                 android:layout_marginRight="3dp"
                 android:minWidth="@dimen/button_height"
                 android:onClick="onLikeButtonClick"
-                custom:drawable="?attr/iconLike"
-                custom:layout="@layout/widget_combo_button_no_text" />
+                custom:drawable="?attr/iconLike" />
 
             <com.aircandi.ui.widgets.ComboButton
                 android:id="@+id/button_watch"
-                style="@style/button"
+                style="@style/button_link"
                 android:layout_width="@dimen/button_height"
                 android:layout_height="@dimen/button_height"
                 android:minWidth="@dimen/button_height"
                 android:onClick="onWatchButtonClick"
-                custom:drawable="?attr/iconWatch"
-                custom:layout="@layout/widget_combo_button_no_text" />
+                custom:drawable="?attr/iconWatch" />
         </LinearLayout>
 
         <com.aircandi.ui.widgets.ComboButton
             android:id="@+id/button_overflow"
-            style="@style/button"
+            style="@style/button_link"
             android:layout_width="@dimen/button_height"
             android:layout_height="@dimen/button_height"
             android:layout_weight="0"
             android:minWidth="@dimen/button_height"
             android:onClick="onOverflowButtonClick"
-            custom:drawable="?attr/iconOverflow"
-            custom:layout="@layout/widget_combo_button_no_text" />
+            custom:drawable="?attr/iconOverflow" />
     </LinearLayout>
 
 </RelativeLayout>

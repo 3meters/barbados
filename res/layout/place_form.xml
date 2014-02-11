@@ -57,18 +57,31 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical" />
             </LinearLayout>
-
         </RelativeLayout>
     </com.aircandi.ui.widgets.BounceScrollView>
 
     <ProgressBar
         android:id="@+id/progress"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="35dp"
-        android:background="?attr/backgroundProgress"
-        android:padding="10dp"
+        style="@style/progress"
+        android:layout_width="@dimen/progress_width"
+        android:layout_height="@dimen/progress_height"
         android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/holder_progress_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="?attr/backgroundForm"
+        android:orientation="vertical" >
+
+        <fr.castorflex.android.smoothprogressbar.SmoothProgressBar
+            android:id="@+id/progress_bar"
+            style="@style/progress_bar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/progress_bar_height"
+            android:indeterminate="true"
+            android:visibility="gone" />
+    </LinearLayout>
 
 </RelativeLayout>

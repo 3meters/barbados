@@ -41,11 +41,10 @@ public class ShortcutFragment extends com.aircandi.ui.ShortcutFragment {
 
 		/* Clear shortcut holder */
 		((ViewGroup) getView().findViewById(R.id.holder_shortcuts)).removeAllViews();
+		mShortcutCount = 0;
 		mFlowLayouts.clear();
 
 		if (mShortcutType.equals(Constants.TYPE_LINK_WATCH)) {
-
-			Boolean empty = true;
 
 			/* Watching places */
 
@@ -53,7 +52,7 @@ public class ShortcutFragment extends com.aircandi.ui.ShortcutFragment {
 			settings.appClass = Place.class;
 			List<Shortcut> shortcuts = mEntity.getShortcuts(settings, new ServiceBase.SortByPositionSortDate(), null);
 			if (shortcuts.size() > 0) {
-				empty = false;
+				mShortcutCount += shortcuts.size();
 				prepareShortcuts(shortcuts
 						, settings
 						, R.string.label_section_places_watching
@@ -69,7 +68,7 @@ public class ShortcutFragment extends com.aircandi.ui.ShortcutFragment {
 			settings.appClass = Candigram.class;
 			shortcuts = mEntity.getShortcuts(settings, new ServiceBase.SortByPositionSortDate(), null);
 			if (shortcuts.size() > 0) {
-				empty = false;
+				mShortcutCount += shortcuts.size();
 				prepareShortcuts(shortcuts
 						, settings
 						, R.string.label_section_candigrams_watching
@@ -85,7 +84,7 @@ public class ShortcutFragment extends com.aircandi.ui.ShortcutFragment {
 			settings.appClass = User.class;
 			shortcuts = mEntity.getShortcuts(settings, new ServiceBase.SortByPositionSortDate(), null);
 			if (shortcuts.size() > 0) {
-				empty = false;
+				mShortcutCount += shortcuts.size();
 				prepareShortcuts(shortcuts
 						, settings
 						, R.string.label_section_users_watching
@@ -94,19 +93,16 @@ public class ShortcutFragment extends com.aircandi.ui.ShortcutFragment {
 						, R.id.holder_shortcuts
 						, R.layout.widget_shortcut);
 			}
-
-			showMessage(empty);
 		}
 		else if (mShortcutType.equals(Constants.TYPE_LINK_CREATE)) {
 
-			Boolean empty = true;
-
 			/* Shortcuts for candigram entities created by user */
+			
 			ShortcutSettings settings = new ShortcutSettings(Constants.TYPE_LINK_CREATE, Constants.SCHEMA_ENTITY_CANDIGRAM, Direction.out, null, false, false);
 			settings.appClass = Candigrams.class;
 			List<Shortcut> shortcuts = mEntity.getShortcuts(settings, new ServiceBase.SortByPositionSortDate(), null);
 			if (shortcuts.size() > 0) {
-				empty = false;
+				mShortcutCount += shortcuts.size();
 				prepareShortcuts(shortcuts
 						, settings
 						, R.string.label_section_candigrams_created
@@ -115,8 +111,6 @@ public class ShortcutFragment extends com.aircandi.ui.ShortcutFragment {
 						, R.id.holder_shortcuts
 						, R.layout.widget_shortcut);
 			}
-
-			showMessage(empty);
 		}
 
 		Aircandi.stopwatch3.segmentTime("Fragment draw finished");

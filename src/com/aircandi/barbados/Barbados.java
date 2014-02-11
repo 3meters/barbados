@@ -1,6 +1,7 @@
 package com.aircandi.barbados;
 
 import com.aircandi.Aircandi;
+import com.aircandi.barbados.components.DispatchManager;
 import com.aircandi.components.StringManager;
 import com.google.tagmanager.TagManager.RefreshMode;
 
@@ -19,5 +20,9 @@ public class Barbados extends Aircandi {
 
 		/* Inject configuration */
 		openContainer(StringManager.getString(R.string.id_container), RefreshMode.STANDARD);
+		
+		/* Inject dispatch manager */
+		Aircandi.dispatch = new DispatchManager();
+		
 	}
 }

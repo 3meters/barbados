@@ -1,7 +1,7 @@
 package com.aircandi.barbados.components;
 
-import com.aircandi.R;
 import com.aircandi.barbados.Barbados;
+import com.aircandi.barbados.R;
 
 public class MediaManager extends com.aircandi.components.MediaManager {
 
