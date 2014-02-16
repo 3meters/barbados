@@ -5,7 +5,10 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.widget.TextView;
 
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuItem;
 import com.aircandi.Aircandi;
+import com.aircandi.barbados.Barbados;
 import com.aircandi.barbados.Constants;
 import com.aircandi.barbados.R;
 import com.aircandi.barbados.queries.ActivityByAffinityQuery;
@@ -14,6 +17,7 @@ import com.aircandi.components.FontManager;
 import com.aircandi.components.StringManager;
 import com.aircandi.events.MessageEvent;
 import com.aircandi.monitors.CurrentUserMonitor;
+import com.aircandi.objects.Route;
 import com.aircandi.queries.ShortcutsQuery;
 import com.aircandi.ui.ActivityFragment;
 import com.aircandi.ui.RadarFragment;
@@ -36,8 +40,10 @@ public class AircandiForm extends com.aircandi.ui.AircandiForm {
 
 	@Override
 	public void onAdd(Bundle extras) {
-		extras.putString(Constants.EXTRA_ENTITY_SCHEMA, Constants.SCHEMA_ENTITY_CANDIGRAM);
-		super.onAdd(extras);
+		if (!extras.containsKey(Constants.EXTRA_ENTITY_SCHEMA)) {
+			extras.putString(Constants.EXTRA_ENTITY_SCHEMA, Constants.SCHEMA_ENTITY_CANDIGRAM);
+		}
+		Barbados.dispatch.route(this, Route.NEW, null, null, extras);
 	}
 
 	// --------------------------------------------------------------------------------------------
@@ -157,7 +163,23 @@ public class AircandiForm extends com.aircandi.ui.AircandiForm {
 
 	// --------------------------------------------------------------------------------------------
 	// Menus
-	// --------------------------------------------------------------------------------------------	
+	// --------------------------------------------------------------------------------------------
+	
+	@Override
+	public boolean onPrepareOptionsMenu(Menu menu) {
+		super.onPrepareOptionsMenu(menu);
+		
+		if (mDrawerLayout != null) {
+			Boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawer);
+
+			MenuItem menuItemAdd = menu.findItem(R.id.add);
+			if (menuItemAdd != null) {
+				menuItemAdd.setVisible(!(drawerOpen));
+			}
+		}
+
+		return true;
+	}
 
 	// --------------------------------------------------------------------------------------------
 	// Lifecycle

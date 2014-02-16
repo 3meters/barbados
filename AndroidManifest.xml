@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.aircandi.barbados"
     android:installLocation="auto"
-    android:versionCode="99"
-    android:versionName="0.9.53" >
+    android:versionCode="100"
+    android:versionName="0.9.54" >
 
     <supports-screens
         android:anyDensity="true"
@@ -197,6 +197,11 @@
             android:label="@string/form_title_comment"
             android:windowSoftInputMode="adjustResize" />
         <activity
+            android:name="com.aircandi.ui.edit.PlaceEdit"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/name_app_lowercase"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
             android:name="com.aircandi.ui.edit.InviteEdit"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/form_title_invite"
@@ -214,11 +219,6 @@
 
         <!-- User activities -->
 
-        <activity
-            android:name="com.aircandi.barbados.ui.user.ProfileForm"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/name_app"
-            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name="com.aircandi.barbados.ui.user.UserForm"
             android:configChanges="orientation|keyboardHidden|screenSize"
@@ -257,6 +257,10 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:windowSoftInputMode="stateHidden" />
         <activity
+            android:name="com.aircandi.ui.helpers.PlacePicker"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
             android:name="com.aircandi.ui.helpers.ApplicationPicker"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:theme="@style/aircandi_theme_dialog_dark"
@@ -271,7 +275,17 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:theme="@style/aircandi_theme_dialog_dark"
             android:windowSoftInputMode="stateHidden" />
-
+        <activity
+            android:name="com.aircandi.ui.helpers.AddressBuilder"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:theme="@style/aircandi_theme_dialog_dark"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name="com.aircandi.ui.helpers.CategoryBuilder"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:theme="@style/aircandi_theme_dialog_dark"
+            android:windowSoftInputMode="stateHidden" />
+        
         <!-- Misc -->
 
         <activity

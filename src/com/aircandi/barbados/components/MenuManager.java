@@ -26,6 +26,7 @@ public class MenuManager extends com.aircandi.components.MenuManager {
 		if (activityName.equals("PlaceForm")) {
 			menuInflater.inflate(R.menu.menu_refresh, menu);
 			menuInflater.inflate(R.menu.menu_add, menu);
+			menuInflater.inflate(R.menu.menu_edit, menu);
 			menuInflater.inflate(R.menu.menu_base, menu);
 
 			if (Type.isTrue(Aircandi.getInstance().getCurrentUser().developer)
