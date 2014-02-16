@@ -22,13 +22,12 @@ public class Links extends com.aircandi.objects.Links {
 	@Override
 	public com.aircandi.objects.Links build(Integer linkProfile) {
 
-		com.aircandi.objects.Links links = null;
-
-		if (linkProfile != LinkProfile.NO_LINKS) {
-
+		if (linkProfile == LinkProfile.NO_LINKS)
+			return null;
+		else {
 			User currentUser = Aircandi.getInstance().getCurrentUser();
 
-			links = new Links().setActive(new ArrayList<LinkParams>());
+			com.aircandi.objects.Links links = new Links().setActive(new ArrayList<LinkParams>());
 			links.shortcuts = true;
 
 			Resources resources = Aircandi.applicationContext.getResources();
@@ -50,7 +49,7 @@ public class Links extends com.aircandi.objects.Links {
 						, true
 						, limitContent
 						, Maps.asMap("inactive", false)));
-				
+
 				links.getActive().add(
 						new LinkParams(Constants.TYPE_LINK_LIKE, Constants.SCHEMA_ENTITY_USER, true, true, 1, Maps.asMap("_from", currentUser.id)));
 				links.getActive().add(
@@ -75,6 +74,8 @@ public class Links extends com.aircandi.objects.Links {
 				links.getActive().add(
 						new LinkParams(Constants.TYPE_LINK_LIKE, Constants.SCHEMA_ENTITY_PLACE, false, true, 0).setDirection(Direction.both));
 				links.getActive().add(
+						new LinkParams(Constants.TYPE_LINK_CREATE, Constants.SCHEMA_ENTITY_PLACE, true, true, limitCreate).setDirection(Direction.out));
+				links.getActive().add(
 						new LinkParams(Constants.TYPE_LINK_CREATE, Constants.SCHEMA_ENTITY_CANDIGRAM, true, true, limitCreate).setDirection(Direction.out));
 				links.getActive().add(
 						new LinkParams(Constants.TYPE_LINK_WATCH, Constants.SCHEMA_ENTITY_PLACE, true, true, limitWatch).setDirection(Direction.out));
@@ -92,8 +93,7 @@ public class Links extends com.aircandi.objects.Links {
 			else {
 				links = super.build(linkProfile);
 			}
+			return links;
 		}
-
-		return links;
 	}
 }

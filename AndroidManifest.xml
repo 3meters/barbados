@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.aircandi.barbados"
     android:installLocation="auto"
-    android:versionCode="97"
-    android:versionName="0.9.51" >
+    android:versionCode="99"
+    android:versionName="0.9.53" >
 
     <supports-screens
         android:anyDensity="true"

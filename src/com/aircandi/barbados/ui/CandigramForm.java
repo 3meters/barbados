@@ -12,7 +12,7 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -103,7 +103,6 @@ public class CandigramForm extends BaseEntityForm {
 
 		final CandiView candiView = (CandiView) findViewById(R.id.candi_view);
 		final AirImageView photoView = (AirImageView) findViewById(R.id.entity_photo);
-		final View photoHolder = findViewById(R.id.holder_photo);
 		final TextView name = (TextView) findViewById(R.id.name);
 		final TextView subtitle = (TextView) findViewById(R.id.subtitle);
 
@@ -125,7 +124,7 @@ public class CandigramForm extends BaseEntityForm {
 				int widgetWidthDp = 122;
 				if (screenWidthDp - widgetWidthDp <= 264) {
 					int photoViewWidth = UI.getRawPixelsForDisplayPixels(this, screenWidthDp - widgetWidthDp);
-					FrameLayout.LayoutParams paramsImage = new FrameLayout.LayoutParams(photoViewWidth, photoViewWidth);
+					RelativeLayout.LayoutParams paramsImage = new RelativeLayout.LayoutParams(photoViewWidth, photoViewWidth);
 					photoView.setLayoutParams(paramsImage);
 				}
 
@@ -133,12 +132,7 @@ public class CandigramForm extends BaseEntityForm {
 					Photo photo = mEntity.getPhoto();
 					UI.drawPhoto(photoView, photo);
 					if (Type.isFalse(photo.usingDefault)) {
-						if (photoHolder != null) {
-							photoHolder.setClickable(true);
-						}
-						else {
-							photoView.setClickable(true);
-						}
+						photoView.setClickable(true);
 					}
 				}
 				UI.setVisibility(photoView, View.VISIBLE);
@@ -330,7 +324,7 @@ public class CandigramForm extends BaseEntityForm {
 	}
 
 	@Override
-	protected void drawButtons() {
+	public void drawButtons() {
 		super.drawButtons();
 
 		Candigram candigram = (Candigram) mEntity;

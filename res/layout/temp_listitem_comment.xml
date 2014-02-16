@@ -16,6 +16,7 @@
 
         <com.aircandi.ui.widgets.AirImageView
             android:id="@+id/user_photo"
+            style="@style/selectable_image"
             android:layout_width="@dimen/image_small"
             android:layout_height="@dimen/image_small"
             android:layout_marginRight="15dp"

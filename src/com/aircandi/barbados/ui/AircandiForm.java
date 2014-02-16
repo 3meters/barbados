@@ -8,11 +8,12 @@ import android.widget.TextView;
 import com.aircandi.Aircandi;
 import com.aircandi.barbados.Constants;
 import com.aircandi.barbados.R;
+import com.aircandi.barbados.queries.ActivityByAffinityQuery;
+import com.aircandi.barbados.queries.ActivityByUserQuery;
 import com.aircandi.components.FontManager;
 import com.aircandi.components.StringManager;
 import com.aircandi.events.MessageEvent;
 import com.aircandi.monitors.CurrentUserMonitor;
-import com.aircandi.queries.ActivitiesQuery;
 import com.aircandi.queries.ShortcutsQuery;
 import com.aircandi.ui.ActivityFragment;
 import com.aircandi.ui.RadarFragment;
@@ -42,7 +43,7 @@ public class AircandiForm extends com.aircandi.ui.AircandiForm {
 	// --------------------------------------------------------------------------------------------
 	// Methods
 	// --------------------------------------------------------------------------------------------
-	
+
 	@Override
 	public void setCurrentFragment(String fragmentType, View view) {
 		/*
@@ -51,9 +52,10 @@ public class AircandiForm extends com.aircandi.ui.AircandiForm {
 		BaseFragment fragment = null;
 
 		FontManager.getInstance().setTypefaceLight((TextView) findViewById(R.id.item_radar).findViewById(R.id.name));
+		FontManager.getInstance().setTypefaceLight((TextView) findViewById(R.id.item_activity).findViewById(R.id.name));
+		FontManager.getInstance().setTypefaceLight((TextView) findViewById(R.id.item_my_activity).findViewById(R.id.name));
 		FontManager.getInstance().setTypefaceLight((TextView) findViewById(R.id.item_watch).findViewById(R.id.name));
 		FontManager.getInstance().setTypefaceLight((TextView) findViewById(R.id.item_create).findViewById(R.id.name));
-		FontManager.getInstance().setTypefaceLight((TextView) findViewById(R.id.item_activity).findViewById(R.id.name));
 		FontManager.getInstance().setTypefaceMedium((TextView) view.findViewById(R.id.name));
 
 		if (mFragments.containsKey(fragmentType)) {
@@ -68,7 +70,44 @@ public class AircandiForm extends com.aircandi.ui.AircandiForm {
 
 				((BaseFragment) fragment).getMenuResIds().add(R.menu.menu_beacons);
 				((BaseFragment) fragment).getMenuResIds().add(R.menu.menu_refresh_special);
+				((BaseFragment) fragment).getMenuResIds().add(R.menu.menu_new_place);
 				((BaseFragment) fragment).getMenuResIds().add(R.menu.menu_help);
+			}
+
+			else if (fragmentType.equals(Constants.FRAGMENT_TYPE_ACTIVITY)) {
+
+				fragment = new ActivityFragment();
+				CurrentUserMonitor monitor = new CurrentUserMonitor();
+				ActivityByAffinityQuery query = new ActivityByAffinityQuery()
+						.setEntityId(Aircandi.getInstance().getCurrentUser().id)
+						.setPageSize(Integers.getInteger(R.integer.page_size_activities));
+
+				((ActivityFragment) fragment)
+						.setMonitor(monitor)
+						.setQuery(query)
+						.setActivityStream(true)
+						.setSelfBindingEnabled(true)
+						.setTitleResId(R.string.label_activity_title);
+
+				((BaseFragment) fragment).getMenuResIds().add(R.menu.menu_refresh);
+			}
+
+			else if (fragmentType.equals(Constants.FRAGMENT_TYPE_MY_ACTIVITY)) {
+
+				fragment = new ActivityFragment();
+				CurrentUserMonitor monitor = new CurrentUserMonitor();
+				ActivityByUserQuery query = new ActivityByUserQuery()
+						.setEntityId(Aircandi.getInstance().getCurrentUser().id)
+						.setPageSize(Integers.getInteger(R.integer.page_size_activities));
+
+				((ActivityFragment) fragment)
+						.setMonitor(monitor)
+						.setQuery(query)
+						.setActivityStream(true)
+						.setSelfBindingEnabled(true)
+						.setTitleResId(R.string.label_my_activity_title);
+
+				((BaseFragment) fragment).getMenuResIds().add(R.menu.menu_refresh);
 			}
 
 			else if (fragmentType.equals(Constants.FRAGMENT_TYPE_WATCH)) {
@@ -105,24 +144,6 @@ public class AircandiForm extends com.aircandi.ui.AircandiForm {
 				((BaseFragment) fragment).getMenuResIds().add(R.menu.menu_refresh);
 			}
 
-			else if (fragmentType.equals(Constants.FRAGMENT_TYPE_ACTIVITY)) {
-
-				fragment = new ActivityFragment();
-				CurrentUserMonitor monitor = new CurrentUserMonitor();
-				ActivitiesQuery query = new ActivitiesQuery()
-						.setEntityId(Aircandi.getInstance().getCurrentUser().id)
-						.setPageSize(Integers.getInteger(R.integer.page_size_activities));
-
-				((ActivityFragment) fragment)
-						.setMonitor(monitor)
-						.setQuery(query)
-						.setActivityStream(true)
-						.setSelfBindingEnabled(true)
-						.setTitleResId(R.string.label_activity_title);
-
-				((BaseFragment) fragment).getMenuResIds().add(R.menu.menu_refresh);
-			}
-
 			mFragments.put(fragmentType, fragment);
 		}
 
@@ -133,7 +154,7 @@ public class AircandiForm extends com.aircandi.ui.AircandiForm {
 		mCurrentFragment = (BaseFragment) fragment;
 		mCurrentFragmentTag = fragmentType;
 	}
-	
+
 	// --------------------------------------------------------------------------------------------
 	// Menus
 	// --------------------------------------------------------------------------------------------	

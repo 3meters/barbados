@@ -9,32 +9,42 @@ import com.aircandi.R;
 import com.aircandi.barbados.objects.EventType;
 import com.aircandi.components.RenderDelegate;
 import com.aircandi.objects.Count;
+import com.aircandi.objects.Entity;
 import com.aircandi.objects.Link.Direction;
 import com.aircandi.objects.User;
-import com.aircandi.ui.base.BaseEntityForm;
 import com.aircandi.utilities.UI;
 
 public class UserStats implements RenderDelegate {
 
 	//@SuppressWarnings("unused")
 	@Override
-	public void draw(BaseEntityForm activity) {
+	public void draw(Entity entity, View view) {
 
-		User user = (User) activity.mEntity;
-		final TextView stats = (TextView) activity.findViewById(R.id.stats);
+		User user = (User) entity;
+		final TextView stats = (TextView) view.findViewById(R.id.stats);
 
 		UI.setVisibility(stats, View.GONE);
 		final StringBuilder statString = new StringBuilder(500);
 
 		/* Like and watch stats */
 
-		Count count = user.getCount(Constants.TYPE_LINK_LIKE, null, false, Direction.in);
-		if (count == null) count = new Count(Constants.TYPE_LINK_LIKE, Constants.SCHEMA_ENTITY_USER, 0);
-		statString.append("Liked by: " + String.valueOf(count.count.intValue()) + "<br/>");
+		TextView likeStats = (TextView) view.findViewById(R.id.like_stats);
+		if (likeStats != null) {
+			Count count = user.getCount(Constants.TYPE_LINK_LIKE, null, false, Direction.in);
+			if (count == null) {
+				count = new Count(Constants.TYPE_LINK_LIKE, Constants.SCHEMA_ENTITY_PICTURE, 0);
+			}
+			likeStats.setText(String.valueOf(count.count));
+		}
 
-		count = user.getCount(Constants.TYPE_LINK_WATCH, null, false, Direction.in);
-		if (count == null) count = new Count(Constants.TYPE_LINK_WATCH, Constants.SCHEMA_ENTITY_USER, 0);
-		statString.append("Watchers: " + String.valueOf(count.count.intValue()) + "<br/>");
+		TextView watchingStats = (TextView) view.findViewById(R.id.watching_stats);
+		if (watchingStats != null) {
+			Count count = user.getCount(Constants.TYPE_LINK_WATCH, null, false, Direction.in);
+			if (count == null) {
+				count = new Count(Constants.TYPE_LINK_WATCH, Constants.SCHEMA_ENTITY_PICTURE, 0);
+			}
+			watchingStats.setText(String.valueOf(count.count));
+		}
 
 		/* Other stats */
 

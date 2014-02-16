@@ -75,6 +75,7 @@
 
                             <com.aircandi.ui.widgets.AirImageView
                                 android:id="@+id/entity_photo"
+                                style="@style/selectable_image"
                                 android:layout_width="@dimen/image_large"
                                 android:layout_height="@dimen/image_large"
                                 android:minWidth="@dimen/image_large"
@@ -93,7 +94,6 @@
                             android:layout_marginLeft="10dp"
                             android:onClick="onChangePhotoButtonClick"
                             custom:label="@string/button_change_picture" />
-
                     </LinearLayout>
 
                     <!-- Title and Content -->

@@ -12,7 +12,7 @@ import com.aircandi.objects.ServiceData;
 import com.aircandi.queries.IQuery;
 import com.aircandi.utilities.Maps;
 
-public class ActivitiesQuery implements IQuery {
+public class ActivityByAffinityQuery implements IQuery {
 
 	protected Boolean	mMore	= false;
 	protected Integer	mPageSize = 30;
@@ -63,12 +63,12 @@ public class ActivitiesQuery implements IQuery {
 		return mMore;
 	}
 
-	public ActivitiesQuery setPageSize(Integer pageSize) {
+	public ActivityByAffinityQuery setPageSize(Integer pageSize) {
 		mPageSize = pageSize;
 		return this;
 	}
 
-	public ActivitiesQuery setEntityId(String entityId) {
+	public ActivityByAffinityQuery setEntityId(String entityId) {
 		mEntityId = entityId;
 		return this;
 	}

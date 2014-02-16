@@ -9,6 +9,7 @@
 
     <com.aircandi.ui.widgets.AirImageView
         android:id="@+id/entity_photo"
+        style="@style/selectable_image"
         android:layout_width="@dimen/image_medium"
         android:layout_height="@dimen/image_medium"
         android:layout_alignParentLeft="true"

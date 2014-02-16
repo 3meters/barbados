@@ -5,38 +5,36 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="visible"
-        android:background="@drawable/bg_image_framed_dark" />
+        android:background="@color/text_dark" />
     
     <View
         android:id="@+id/color_layer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="3dp"
+        android:layout_margin="2px"
         android:visibility="gone" />
 
     <View
         android:id="@+id/reverse_layer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="3dp"
+        android:layout_margin="2px"
         android:background="@color/overlay_gray_light"
         android:visibility="gone" />
 
     <ProgressBar
         android:id="@+id/image_progress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/progress_small_width"
+        android:layout_height="@dimen/progress_small_height"
         android:layout_centerInParent="true"
         android:focusable="true"
-        android:maxHeight="30dp"
-        android:minHeight="30dp"
         android:visibility="gone" />
 
     <ImageView
         android:id="@+id/image_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="3dp"
+        android:layout_margin="2px"
         android:adjustViewBounds="true"
         android:scaleType="centerCrop" />
 

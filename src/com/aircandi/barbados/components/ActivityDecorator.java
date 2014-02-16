@@ -68,7 +68,8 @@ public class ActivityDecorator extends com.aircandi.components.ActivityDecorator
 						return "kicked a candigram you\'re watching to a new place.";
 					else if (activity.trigger.equals(TriggerType.WATCH_TO))
 						return "kicked a candigram to a place you\'re watching.";
-					else if (activity.trigger.equals(TriggerType.WATCH_USER))
+					else if (activity.trigger.equals(TriggerType.WATCH_USER)
+							|| activity.trigger.equals(TriggerType.NONE))
 						return "kicked a candigram to a new place.";
 					else if (activity.trigger.equals(TriggerType.OWN))
 						return "kicked a candigram you started to a new place.";
@@ -98,7 +99,8 @@ public class ActivityDecorator extends com.aircandi.components.ActivityDecorator
 				else if (activity.trigger.equals(TriggerType.WATCH_TO))
 					return String.format("sent a candigram to a place you are watching.", activity.action.entity.getSchemaMapped(),
 							activity.action.toEntity.getSchemaMapped());
-				else if (activity.trigger.equals(TriggerType.WATCH_USER))
+				else if (activity.trigger.equals(TriggerType.WATCH_USER)
+						|| activity.trigger.equals(TriggerType.NONE))
 					return String.format("sent a candigram.", activity.action.entity.getSchemaMapped(), activity.action.toEntity.getSchemaMapped());
 				else if (activity.trigger.equals(TriggerType.OWN_TO)) return String
 						.format("sent a candigram to a place of yours.", activity.action.entity.getSchemaMapped(), activity.action.toEntity.getSchemaMapped());

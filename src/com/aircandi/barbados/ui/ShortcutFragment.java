@@ -11,12 +11,14 @@ import com.aircandi.barbados.R;
 import com.aircandi.barbados.controllers.Candigrams;
 import com.aircandi.barbados.objects.Candigram;
 import com.aircandi.components.Logger;
+import com.aircandi.events.ActivityCompleteEvent;
 import com.aircandi.objects.Link.Direction;
 import com.aircandi.objects.Place;
 import com.aircandi.objects.ServiceBase;
 import com.aircandi.objects.Shortcut;
 import com.aircandi.objects.ShortcutSettings;
 import com.aircandi.objects.User;
+import com.squareup.otto.Subscribe;
 
 @SuppressWarnings("ucd")
 public class ShortcutFragment extends com.aircandi.ui.ShortcutFragment {
@@ -24,6 +26,12 @@ public class ShortcutFragment extends com.aircandi.ui.ShortcutFragment {
 	// --------------------------------------------------------------------------------------------
 	// Events
 	// --------------------------------------------------------------------------------------------
+	
+	@Override
+	@Subscribe
+	public void onActivityComplete(final ActivityCompleteEvent event) {
+		super.onActivityComplete(event);
+	}
 
 	// --------------------------------------------------------------------------------------------
 	// Methods
@@ -96,11 +104,26 @@ public class ShortcutFragment extends com.aircandi.ui.ShortcutFragment {
 		}
 		else if (mShortcutType.equals(Constants.TYPE_LINK_CREATE)) {
 
+			/* Shortcuts for place entities created by user */
+			
+			ShortcutSettings settings = new ShortcutSettings(Constants.TYPE_LINK_CREATE, Constants.SCHEMA_ENTITY_PLACE, Direction.out, null, false, false);
+			settings.appClass = Place.class;
+			List<Shortcut> shortcuts = mEntity.getShortcuts(settings, new ServiceBase.SortByPositionSortDate(), null);
+			if (shortcuts.size() > 0) {
+				mShortcutCount += shortcuts.size();
+				prepareShortcuts(shortcuts
+						, settings
+						, R.string.label_section_places_created
+						, R.string.label_link_places_more
+						, mResources.getInteger(R.integer.limit_shortcuts_flow_create)
+						, R.id.holder_shortcuts
+						, R.layout.widget_shortcut);
+			}
 			/* Shortcuts for candigram entities created by user */
 			
-			ShortcutSettings settings = new ShortcutSettings(Constants.TYPE_LINK_CREATE, Constants.SCHEMA_ENTITY_CANDIGRAM, Direction.out, null, false, false);
+			settings = new ShortcutSettings(Constants.TYPE_LINK_CREATE, Constants.SCHEMA_ENTITY_CANDIGRAM, Direction.out, null, false, false);
 			settings.appClass = Candigrams.class;
-			List<Shortcut> shortcuts = mEntity.getShortcuts(settings, new ServiceBase.SortByPositionSortDate(), null);
+			shortcuts = mEntity.getShortcuts(settings, new ServiceBase.SortByPositionSortDate(), null);
 			if (shortcuts.size() > 0) {
 				mShortcutCount += shortcuts.size();
 				prepareShortcuts(shortcuts
