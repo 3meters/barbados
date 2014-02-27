@@ -9,7 +9,7 @@ public class AnimationManager extends com.aircandi.components.AnimationManager {
 
 	@Override
 	@SuppressWarnings("ucd")
-	public void doOverridePendingTransitionDefault(Activity activity, Integer transitionType) {
+	public void doOverridePendingTransition(Activity activity, Integer transitionType) {
 		/*
 		 * Default android animations are used unless overridden here.
 		 */
@@ -17,7 +17,7 @@ public class AnimationManager extends com.aircandi.components.AnimationManager {
 			activity.overridePendingTransition(R.anim.fade_in_medium, R.anim.slide_out_right);
 		}
 		else {
-			super.doOverridePendingTransitionDefault(activity, transitionType);
+			super.doOverridePendingTransition(activity, transitionType);
 		}
 
 	}

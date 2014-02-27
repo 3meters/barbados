@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.aircandi.Aircandi;
 import com.aircandi.barbados.Constants;
 import com.aircandi.barbados.R;
 import com.aircandi.barbados.controllers.Candigrams;
@@ -15,9 +16,11 @@ import com.aircandi.barbados.objects.Candigram;
 import com.aircandi.components.StringManager;
 import com.aircandi.events.MessageEvent;
 import com.aircandi.objects.Link.Direction;
+import com.aircandi.objects.Route;
 import com.aircandi.objects.Shortcut;
 import com.aircandi.objects.ShortcutSettings;
 import com.aircandi.utilities.Colors;
+import com.aircandi.utilities.Dialogs;
 import com.aircandi.utilities.UI;
 import com.squareup.otto.Subscribe;
 
@@ -35,9 +38,16 @@ public class PlaceForm extends com.aircandi.ui.PlaceForm {
 
 	@Override
 	public void onAdd(Bundle extras) {
-		extras.putString(Constants.EXTRA_ENTITY_PARENT_ID, mEntityId);
-		extras.putString(Constants.EXTRA_ENTITY_SCHEMA, Constants.SCHEMA_ENTITY_CANDIGRAM);
-		super.onAdd(extras);
+		
+		if (Aircandi.getInstance().getMenuManager().canUserAdd(mEntity)) {
+			extras.putString(Constants.EXTRA_ENTITY_PARENT_ID, mEntityId);
+			extras.putString(Constants.EXTRA_ENTITY_SCHEMA, Constants.SCHEMA_ENTITY_CANDIGRAM);
+			Aircandi.dispatch.route(this, Route.NEW, null, null, extras);
+			return;
+		}
+		if (mEntity.locked) {
+			Dialogs.locked(this, mEntity);
+		}
 	}
 
 	@Override

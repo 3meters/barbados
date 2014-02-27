@@ -13,8 +13,8 @@ import com.aircandi.utilities.Maps;
 
 public class ActivityByUserQuery implements IQuery {
 
-	protected Boolean	mMore	= false;
-	protected Integer	mPageSize = 30;
+	protected Boolean	mMore		= false;
+	protected Integer	mPageSize	= 30;
 	protected String	mEntityId;
 
 	@Override
@@ -23,7 +23,7 @@ public class ActivityByUserQuery implements IQuery {
 		 * - Should be called on a background thread.
 		 * - Sorting is applied to links not the entities on the service side.
 		 */
-		
+
 		Cursor cursor = new Cursor()
 				.setLimit(mPageSize)
 				.setSort(Maps.asMap("modifiedDate", -1))
@@ -37,8 +37,32 @@ public class ActivityByUserQuery implements IQuery {
 		events.add(EventType.MOVE_CANDIGRAM);
 		events.add(EventType.RESTART_CANDIGRAM);
 
+		events.add(EventType.UPDATE_PLACE);
+		events.add(EventType.UPDATE_USER);
+		events.add(EventType.UPDATE_CANDIGRAM);
+
+		events.add(EventType.DELETE_PLACE);
+		events.add(EventType.DELETE_PICTURE);
+		events.add(EventType.DELETE_CANDIGRAM);
+
+		events.add(EventType.WATCH_PLACE);
+		events.add(EventType.WATCH_CANDIGRAM);
+		events.add(EventType.WATCH_USER);
+
+		events.add(EventType.UNWATCH_PLACE);
+		events.add(EventType.UNWATCH_CANDIGRAM);
+		events.add(EventType.UNWATCH_USER);
+
+		events.add(EventType.LIKE_PLACE);
+		events.add(EventType.LIKE_CANDIGRAM);
+		events.add(EventType.LIKE_USER);
+
+		events.add(EventType.UNLIKE_PLACE);
+		events.add(EventType.UNLIKE_CANDIGRAM);
+		events.add(EventType.UNLIKE_USER);
+
 		ModelResult result = Aircandi.getInstance().getEntityManager().loadActivities(mEntityId, cursor, events);
-		
+
 		if (result.data != null) {
 			mMore = ((ServiceData) result.serviceResponse.data).more;
 		}

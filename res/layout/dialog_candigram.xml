@@ -11,9 +11,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        custom:textId="@string/dummy_name"
         android:textAppearance="?android:attr/textAppearance"
-        android:textColor="?attr/textColor" />
+        android:textColor="?attr/textColor"
+        custom:textId="@string/dummy_name" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -26,6 +26,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginRight="10dp"
             custom:layout="@layout/widget_webimageview_candi_view"
+            custom:sizeType="thumbnail"
             custom:sizeHint="@dimen/image_medium" />
 
         <com.aircandi.ui.widgets.AirTextLight
@@ -37,20 +38,20 @@
             android:layout_toRightOf="@id/entity_photo"
             android:ellipsize="end"
             android:maxLines="2"
-            custom:textId="@string/dummy_title"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            custom:textId="@string/dummy_title" />
 
         <com.aircandi.ui.widgets.AirTextView
             android:id="@+id/address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignWithParentIfMissing="true"
-            android:textAppearance="?android:attr/textAppearance"
             android:layout_below="@+id/name"
+            android:layout_toRightOf="@id/entity_photo"
             android:ellipsize="end"
             android:maxLines="2"
-            android:layout_toRightOf="@id/entity_photo"
+            android:textAppearance="?android:attr/textAppearance"
             custom:textId="@string/dummy_address" />
     </RelativeLayout>
 

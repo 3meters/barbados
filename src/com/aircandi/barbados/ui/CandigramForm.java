@@ -20,7 +20,6 @@ import com.aircandi.Aircandi;
 import com.aircandi.ServiceConstants;
 import com.aircandi.barbados.Constants;
 import com.aircandi.barbados.R;
-import com.aircandi.barbados.components.AnimationManager;
 import com.aircandi.barbados.components.EntityManager;
 import com.aircandi.barbados.components.MediaManager;
 import com.aircandi.barbados.objects.Candigram;
@@ -128,7 +127,7 @@ public class CandigramForm extends BaseEntityForm {
 					photoView.setLayoutParams(paramsImage);
 				}
 
-				if (!UI.photosEqual(photoView.getPhoto(), mEntity.getPhoto())) {
+				if (!Photo.same(photoView.getPhoto(), mEntity.getPhoto())) {
 					Photo photo = mEntity.getPhoto();
 					UI.drawPhoto(photoView, photo);
 					if (Type.isFalse(photo.usingDefault)) {
@@ -189,7 +188,7 @@ public class CandigramForm extends BaseEntityForm {
 		EntityView placeView = (EntityView) findViewById(R.id.place);
 		UI.setVisibility(placeView, View.GONE);
 		if (placeView != null) {
-			Link link = candigram.getParentLink(Constants.TYPE_LINK_CONTENT, Constants.SCHEMA_ENTITY_PLACE);
+			Link link = candigram.getParentLink(Constants.TYPE_LINK_CONTENT, Constants.SCHEMA_ENTITY_PLACE, false);
 			if (link != null && link.shortcut != null) {
 				Entity place = link.shortcut.getAsEntity();
 				placeView.setLabel(R.string.label_candigram_current_place);
@@ -208,7 +207,7 @@ public class CandigramForm extends BaseEntityForm {
 		((ViewGroup) findViewById(R.id.holder_shortcuts)).removeAllViews();
 
 		/* Synthetic applink shortcuts */
-		ShortcutSettings settings = new ShortcutSettings(Constants.TYPE_LINK_CONTENT, Constants.SCHEMA_ENTITY_APPLINK, Direction.in, null, true, true);
+		ShortcutSettings settings = new ShortcutSettings(Constants.TYPE_LINK_CONTENT, Constants.SCHEMA_ENTITY_APPLINK, Direction.in, false, true, true);
 		settings.appClass = Applink.class;
 		List<Shortcut> shortcuts = mEntity.getShortcuts(settings, null, new Shortcut.SortByPositionSortDate());
 		if (shortcuts.size() > 0) {
@@ -224,7 +223,7 @@ public class CandigramForm extends BaseEntityForm {
 		}
 
 		/* service applink shortcuts */
-		settings = new ShortcutSettings(Constants.TYPE_LINK_CONTENT, Constants.SCHEMA_ENTITY_APPLINK, Direction.in, null, false, true);
+		settings = new ShortcutSettings(Constants.TYPE_LINK_CONTENT, Constants.SCHEMA_ENTITY_APPLINK, Direction.in, false, false, true);
 		settings.appClass = Applink.class;
 		shortcuts = mEntity.getShortcuts(settings, null, new Shortcut.SortByPositionSortDate());
 		if (shortcuts.size() > 0) {
@@ -388,7 +387,7 @@ public class CandigramForm extends BaseEntityForm {
 	public void onBounceButtonClick(View view) {
 
 		if (Aircandi.getInstance().getCurrentUser().isAnonymous()) {
-			Dialogs.signin(this, R.string.alert_signin_message_candigram_bounce);
+			Dialogs.signinRequired(this, R.string.alert_signin_message_candigram_bounce);
 			return;
 		}
 
@@ -518,12 +517,12 @@ public class CandigramForm extends BaseEntityForm {
 						controller.view(CandigramForm.this, entity, null, null, null, null, true);
 						MediaManager.playSound(MediaManager.SOUND_CANDIGRAM_EXIT, 1.0f);
 						finish();
-						AnimationManager.getInstance().doOverridePendingTransition(CandigramForm.this, TransitionType.CANDIGRAM_OUT);
+						Aircandi.getInstance().getAnimationManager().doOverridePendingTransition(CandigramForm.this, TransitionType.CANDIGRAM_OUT);
 					}
 					else {
 						MediaManager.playSound(MediaManager.SOUND_CANDIGRAM_EXIT, 1.0f);
 						finish();
-						AnimationManager.getInstance().doOverridePendingTransition(CandigramForm.this, TransitionType.CANDIGRAM_OUT);
+						Aircandi.getInstance().getAnimationManager().doOverridePendingTransition(CandigramForm.this, TransitionType.CANDIGRAM_OUT);
 					}
 				}
 				else {
@@ -599,7 +598,7 @@ public class CandigramForm extends BaseEntityForm {
 						controller.view(CandigramForm.this, entity, null, null, null, null, true);
 						MediaManager.playSound(MediaManager.SOUND_CANDIGRAM_EXIT, 1.0f);
 						finish();
-						AnimationManager.getInstance().doOverridePendingTransition(CandigramForm.this, TransitionType.CANDIGRAM_OUT);
+						Aircandi.getInstance().getAnimationManager().doOverridePendingTransition(CandigramForm.this, TransitionType.CANDIGRAM_OUT);
 					}
 					else {
 						MediaManager.playSound(MediaManager.SOUND_CANDIGRAM_EXIT, 1.0f);

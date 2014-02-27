@@ -13,6 +13,7 @@ import com.aircandi.barbados.Constants;
 import com.aircandi.barbados.R;
 import com.aircandi.objects.Entity;
 import com.aircandi.objects.Link.Direction;
+import com.aircandi.objects.Photo;
 import com.aircandi.objects.Shortcut;
 import com.aircandi.objects.ShortcutSettings;
 import com.aircandi.ui.widgets.AirImageView;
@@ -59,7 +60,7 @@ public class CandiView extends com.aircandi.ui.widgets.CandiView {
 			if (!dirty) {
 				Integer i = 0;
 				for (Shortcut shortcut : mShortcuts) {
-					if (!UI.photosEqual(shortcut.getPhoto(), shortcuts.get(i).getPhoto())) {
+					if (!Photo.same(shortcut.getPhoto(), shortcuts.get(i).getPhoto())) {
 						dirty = true;
 						break;
 					}

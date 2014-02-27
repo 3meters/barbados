@@ -24,9 +24,9 @@ import android.widget.TextView;
 import android.widget.ViewFlipper;
 
 import com.aircandi.Aircandi;
+import com.aircandi.Aircandi.ThemeTone;
 import com.aircandi.barbados.Constants;
 import com.aircandi.barbados.R;
-import com.aircandi.barbados.components.AnimationManager;
 import com.aircandi.barbados.controllers.Candigrams;
 import com.aircandi.barbados.controllers.Candigrams.PropertyType;
 import com.aircandi.barbados.objects.Candigram;
@@ -81,7 +81,7 @@ public class CandigramEdit extends BaseEntityEdit {
 		mDeletedResId = R.string.alert_stopped;
 
 		mViewFlipper = (ViewFlipper) findViewById(R.id.flipper_form);
-		mSpinnerItem = getThemeTone().equals("dark") ? R.layout.spinner_item_dark : R.layout.spinner_item_light;
+		mSpinnerItem = Aircandi.themeTone.equals(ThemeTone.DARK) ? R.layout.spinner_item_dark : R.layout.spinner_item_light;
 
 		mStopped = (CheckBox) findViewById(R.id.chk_stopped);
 		mHintParked = (TextView) findViewById(R.id.hint_stopped);
@@ -426,7 +426,7 @@ public class CandigramEdit extends BaseEntityEdit {
 				if (mSkipSave) {
 					setResultCode(Activity.RESULT_OK);
 					finish();
-					AnimationManager.getInstance().doOverridePendingTransition(this, TransitionType.CANDIGRAM_OUT);
+					Aircandi.getInstance().getAnimationManager().doOverridePendingTransition(this, TransitionType.CANDIGRAM_OUT);
 				}
 				else {
 					if (mEditing) {
@@ -650,7 +650,7 @@ public class CandigramEdit extends BaseEntityEdit {
 			FontManager.getInstance().setTypefaceDefault((TextView) view);
 
 			final TextView text = (TextView) view.findViewById(R.id.spinner_name);
-			if (getThemeTone().equals("dark")) {
+			if (Aircandi.themeTone.equals(ThemeTone.DARK)) {
 				if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.HONEYCOMB) {
 					text.setTextColor(getResources().getColor(R.color.text_dark));
 				}

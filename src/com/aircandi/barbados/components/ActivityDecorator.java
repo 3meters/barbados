@@ -57,9 +57,9 @@ public class ActivityDecorator extends com.aircandi.components.ActivityDecorator
 	@Override
 	public String subtitle(ActivityBase activity) {
 
-		if (activity.action.getEventCategory().equals(EventCategory.MOVE)) {
-			if (activity.action.entity.schema.equals(Constants.SCHEMA_ENTITY_CANDIGRAM)) {
+		if (activity.action.entity.schema.equals(Constants.SCHEMA_ENTITY_CANDIGRAM)) {
 
+			if (activity.action.getEventCategory().equals(EventCategory.MOVE)) {
 				if (activity.action.entity.type.equals(Constants.TYPE_APP_BOUNCE)) {
 
 					if (activity.trigger.equals(TriggerType.NEARBY))
@@ -88,10 +88,7 @@ public class ActivityDecorator extends com.aircandi.components.ActivityDecorator
 					else if (activity.trigger.equals(TriggerType.OWN_TO)) return "A candigram has traveled to a place of yours";
 				}
 			}
-		}
-		else if (activity.action.getEventCategory().equals(EventCategory.INSERT)) {
-
-			if (activity.action.entity.schema.equals(Constants.SCHEMA_ENTITY_CANDIGRAM)) {
+			else if (activity.action.getEventCategory().equals(EventCategory.INSERT)) {
 
 				if (activity.trigger.equals(TriggerType.NEARBY))
 					return String.format("sent a candigram to a place nearby.", activity.action.entity.getSchemaMapped(),
@@ -102,8 +99,32 @@ public class ActivityDecorator extends com.aircandi.components.ActivityDecorator
 				else if (activity.trigger.equals(TriggerType.WATCH_USER)
 						|| activity.trigger.equals(TriggerType.NONE))
 					return String.format("sent a candigram.", activity.action.entity.getSchemaMapped(), activity.action.toEntity.getSchemaMapped());
-				else if (activity.trigger.equals(TriggerType.OWN_TO)) return String
-						.format("sent a candigram to a place of yours.", activity.action.entity.getSchemaMapped(), activity.action.toEntity.getSchemaMapped());
+				else if (activity.trigger.equals(TriggerType.OWN_TO))
+					return String
+							.format("sent a candigram to a place of yours.", activity.action.entity.getSchemaMapped(),
+									activity.action.toEntity.getSchemaMapped());
+			}
+			else if (activity.action.getEventCategory() == EventCategory.UPDATE) {
+				return "edited a candigram";
+			}
+			else if (activity.action.getEventCategory() == EventCategory.DELETE) {
+				return "removed a candigram";
+			}
+			else if (activity.action.getEventCategory() == EventCategory.WATCH) {
+				if (activity.action.event.contains("unwatch")) {
+					return "stopped watching a candigram";
+				}
+				else {
+					return "started watching a candigram";
+				}
+			}
+			else if (activity.action.getEventCategory() == EventCategory.LIKE) {
+				if (activity.action.event.contains("unwatch")) {
+					return "unliked a candigram";
+				}
+				else {
+					return "liked a candigram";
+				}
 			}
 		}
 		return super.subtitle(activity);
@@ -116,7 +137,7 @@ public class ActivityDecorator extends com.aircandi.components.ActivityDecorator
 				&& activity.action.getEventCategory().equals(EventCategory.MOVE)) {
 			return activity.action.entity.name;
 		}
-		
+
 		return super.title(activity);
 	}
 

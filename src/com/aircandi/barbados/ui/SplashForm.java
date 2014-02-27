@@ -3,6 +3,7 @@ package com.aircandi.barbados.ui;
 import com.aircandi.Aircandi;
 import com.aircandi.barbados.Constants;
 import com.aircandi.barbados.components.ActivityDecorator;
+import com.aircandi.barbados.components.AnimationManager;
 import com.aircandi.barbados.components.EntityManager;
 import com.aircandi.barbados.components.MediaManager;
 import com.aircandi.barbados.components.MenuManager;
@@ -29,7 +30,8 @@ public class SplashForm extends com.aircandi.ui.SplashForm {
 				.setActivityDecorator(new ActivityDecorator())
 				.setShortcutManager(new ShortcutManager())
 				.setEntityManager(new EntityManager().setLinks(new Links()))
-				.setMediaManager(new MediaManager().initSoundPool());
+				.setMediaManager(new MediaManager().initSoundPool())
+				.setAnimationManager(new AnimationManager());
 
 		Aircandi.controllerMap.put(Constants.SCHEMA_ENTITY_APPLINK, new Applinks());
 		Aircandi.controllerMap.put(Constants.SCHEMA_ENTITY_BEACON, new Beacons());

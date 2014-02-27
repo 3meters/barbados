@@ -74,6 +74,7 @@
                         android:onClick="onPhotoClick"
                         android:scaleType="centerCrop"
                         custom:layout="@layout/widget_webimageview"
+                        custom:sizeType="preview"
                         custom:sizeHint="@dimen/image_extra_extra_large" />
 
                     <!-- Info overlay for photo -->

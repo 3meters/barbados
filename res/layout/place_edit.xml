@@ -49,6 +49,7 @@
                         android:scaleType="centerCrop"
                         custom:layout="@layout/widget_webimageview_candi_view"
                         custom:showBusy="true"
+                        custom:sizeType="preview"
                         custom:sizeHint="@dimen/image_large" />
                 </FrameLayout>
 

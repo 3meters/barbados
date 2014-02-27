@@ -6,10 +6,10 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 
+import com.aircandi.Aircandi;
 import com.aircandi.Constants;
 import com.aircandi.barbados.ui.AircandiForm;
 import com.aircandi.barbados.ui.SplashForm;
-import com.aircandi.components.AnimationManager;
 import com.aircandi.components.IntentBuilder;
 import com.aircandi.objects.Entity;
 import com.aircandi.objects.Route;
@@ -41,7 +41,7 @@ public class DispatchManager extends com.aircandi.components.DispatchManager {
 			intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
 
 			activity.startActivity(intent);
-			AnimationManager.getInstance().doOverridePendingTransition(activity, TransitionType.PAGE_TO_HELP);
+			Aircandi.getInstance().getAnimationManager().doOverridePendingTransition(activity, TransitionType.PAGE_TO_HELP);
 			return;
 		}
 		
@@ -58,7 +58,7 @@ public class DispatchManager extends com.aircandi.components.DispatchManager {
 			}
 			activity.startActivity(intent);
 			activity.finish();
-			AnimationManager.getInstance().doOverridePendingTransition(activity, TransitionType.FORM_TO_PAGE);
+			Aircandi.getInstance().getAnimationManager().doOverridePendingTransition(activity, TransitionType.FORM_TO_PAGE);
 			return;
 		}
 

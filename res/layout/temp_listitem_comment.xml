@@ -25,6 +25,7 @@
             android:clickable="true"
             android:onClick="onEntityClick"
             android:src="@drawable/img_placeholder_logo_bw"
+            custom:sizeType="thumbnail"
             custom:sizeHint="@dimen/image_small" />
     </LinearLayout>
 
