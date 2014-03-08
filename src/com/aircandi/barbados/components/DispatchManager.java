@@ -58,7 +58,9 @@ public class DispatchManager extends com.aircandi.components.DispatchManager {
 			}
 			activity.startActivity(intent);
 			activity.finish();
-			Aircandi.getInstance().getAnimationManager().doOverridePendingTransition(activity, TransitionType.FORM_TO_PAGE);
+			if (Aircandi.getInstance().getAnimationManager() != null) {
+				Aircandi.getInstance().getAnimationManager().doOverridePendingTransition(activity, TransitionType.FORM_TO_PAGE);
+			}
 			return;
 		}
 
