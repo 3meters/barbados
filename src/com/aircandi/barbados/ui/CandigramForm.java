@@ -510,7 +510,7 @@ public class CandigramForm extends BaseEntityForm {
 			protected void onPostExecute(Object response) {
 				ModelResult result = (ModelResult) response;
 				setSupportProgressBarIndeterminateVisibility(false);
-				mBusy.hideBusy();
+				mBusy.hideBusy(true);
 				if (result.serviceResponse.responseCode == ResponseCode.SUCCESS) {
 					if (follow) {
 						IEntityController controller = Aircandi.getInstance().getControllerForSchema(entity.schema);
@@ -591,7 +591,7 @@ public class CandigramForm extends BaseEntityForm {
 			protected void onPostExecute(Object response) {
 				ModelResult result = (ModelResult) response;
 				setSupportProgressBarIndeterminateVisibility(false);
-				mBusy.hideBusy();
+				mBusy.hideBusy(true);
 				if (result.serviceResponse.responseCode == ResponseCode.SUCCESS) {
 					if (follow) {
 						IEntityController controller = Aircandi.getInstance().getControllerForSchema(entity.schema);
